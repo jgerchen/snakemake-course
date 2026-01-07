@@ -30,11 +30,16 @@ You need:
 
 ## How will this course be structured?
 
-This is a practical course with the aim to give you the tools at hand to write your own bioinformatics workflows in Snakemake. We will start off with a bit of background to better understand what snakemake is, where it came from and what it's good for and then we will go directly into building your own workflow, step by step.
+This is a practical course with the aim to give you the tools at hand to write your own bioinformatics workflows in Snakemake. We will start off with a bit of background to better understand what snakemake is, where it came from and what it's good for and then we will go directly into building your own workflow, step by step. You will first learn the basics locally on your own laptop and then, in a second step, you will learn how to run complex worklflows in a parrallelized way on a computing cluster like MetaCentrum.
 
-In general I will introduce the elements that make up a Snakemake workflow in small steps, at each of which you will implement it on your own laptop in a minimal and abstract way. Then, at the end of each chapter, I will ask you to apply what you learned yourself in a more practical way. I thought it would be nice to have something more tangible for these parts, so you will implement running simulations using the individual-based simulation software [SLiM](https://messerlab.org/slim/) and do some nice looking popgen things with its output. 
+I will introduce the elements that make up a Snakemake workflow in small steps, each of which you will implement it on your own laptop in a minimal and abstract way. Then, at the end of each chapter, I will ask you to apply what you learned yourself in a more practical way. I thought it would be nice to have something more tangible for these parts, so you will implement running simulations using the individual-based simulation software [SLiM](https://messerlab.org/slim/) and do some nice looking popgen things with its output. 
 
-However, this course is really not about how these simulations or the follow up programs work, but more generally how we can combine different types of software packages in a single Snakemake workflow. So you will not have to understand how this software works but rather be putting together scripts and commands that I will give you. But of course I'm happy to explain more details about this software as well if you have any questions.
+However, this course is really not about how these simulations or the follow up programs work, but more generally how we can combine different types of software packages in a single Snakemake workflow. So you will not have to understand how the simulations work but rather be putting together scripts and commands that I will give you. But of course I'm happy to explain more details about this software as well if you have any questions.
 
-I also don't know how long individual parts will take beforehand, so I will structure this course in a way that we should be able to get through the most important parts and add more optional parts at the end. So if we don't end up getting through everything together parts together you should still be able to build your own workflows with the stuff that we managed to do in person. Also this repository will remain publicly available here after the course, so you can go through things that we didn't manage to finish by yourself if it's relevant for you.
+I also don't know how long individual parts will take beforehand, so I will structure this course in a way that we should be able to get through the most important parts and add more optional parts at the end. So if we don't end up getting through everything together you should still be able to build your own workflows with the stuff that we managed to do in person. Also this repository will remain publicly available here after the course, so you can go through things that we didn't manage to finish by yourself if it's relevant for you.
+
+## Lessons
+
+[01. Setting up Snakemake using Conda](01_setting_up.md)
+
 
