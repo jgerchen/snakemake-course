@@ -67,7 +67,7 @@ mamba install -c bioconda snakemake
 
 Mamba will give you a long list of packages it will install besides Snakemake. In that list you can find a line, which looks like this
 
-> + snakemake   9.14.6  hdfd78af_0  bioconda    10kB
+> \+ snakemake   9.14.6  hdfd78af_0  bioconda    10kB
 
 
 
