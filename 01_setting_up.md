@@ -69,5 +69,9 @@ Mamba will give you a long list of packages it will install besides Snakemake. I
 
 > \+ snakemake   9.14.6  hdfd78af_0  bioconda    10kB
 
+Here the second column will tell you the version of Snakemake (9.14.6) and the fourth column will tell you the channel it will get the package from.
+
+> [!CAUTION]
+> Always check that conda actually installs the package version that you expect. In some situations it may install older versions, if the given channels don't have all the dependencies required for the latest version.
 
 
