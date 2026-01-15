@@ -46,7 +46,7 @@ And after activating, your shell prompt should indicate that now your **snakemak
 > (snakemake) fredo@krnpnq2:
 
 > [!TIP]
-> You can directly activate environments you created (in this example your **snakemake** environemnt) from the shell using
+> You can directly activate environments you created (in this example your **snakemake** environment) from the shell using
 
 ```
 source bin/activate snakemake
@@ -73,5 +73,31 @@ Here the second column will tell you the version of Snakemake (9.14.6) and the f
 
 > [!CAUTION]
 > Always check that conda actually installs the package version that you expect. In some situations it may install older versions, if the given channels don't have all the dependencies required for the latest version.
+
+If this looks correct, you can tell mamba to install all listed software by confirming the following prompt
+
+> Confirm changes: [Y/n]
+
+After downloading and installing packages (which can take a while) it should tell you 
+
+> Transaction finished
+
+Now you should be able to run the following command in your snakemake environment
+
+```
+snakemake -v
+```
+
+Which should just output the installed version of Snakemake, in my case
+
+> 9.14.6
+
+
+
+
+
+
+
+
 
 
