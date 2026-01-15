@@ -1,4 +1,4 @@
-# snakemake-course
+# Building reproducible bioinformatics workflows using Snakemak
 
 ## What is this course about?
 
