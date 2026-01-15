@@ -59,3 +59,15 @@ source bin/activate snakemake
 > [!WARNING]
 > Always make sure that the correct conda environment is activated before you install software. While it is also possible to install software into the base environment, you will sooner or later run into issues with incompatible versions and your conda will slow down substantially if you install your software into the base environemnt.
 
+Now with the **snakemake** environment activate, we want to install the snakemake package into it using the [mamba package solver](https://mamba.readthedocs.io/en/latest/index.html). We will also want to tell mamba that we want to use the [bioconda channel](https://bioconda.github.io/) using the -c option.
+
+```
+mamba install -c bioconda snakemake
+```
+
+Mamba will give you a long list of packages it will install besides Snakemake. In that list you can find a line, which looks like this
+
+> + snakemake   9.14.6  hdfd78af_0  bioconda    10kB
+
+
+
