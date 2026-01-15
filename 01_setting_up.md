@@ -99,8 +99,8 @@ Which should just output the installed version of Snakemake, in my case
 > 9.14.6
 
 ## More useful conda commands
-
-You can find extensive documentation on conda commands [here](https://docs.conda.io/projects/conda/en/stable/commands/index.html). Here are some additional conda commands that I use commonly are:
+> [!TIP]
+> You can find extensive documentation on conda commands [here](https://docs.conda.io/projects/conda/en/stable/commands/index.html). Here are some additional conda commands that I use commonly are:
 
 + List all conda environments and their locations
 
