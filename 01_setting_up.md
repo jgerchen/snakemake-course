@@ -11,6 +11,13 @@ Before we start we first have to install Snakemake using [Conda](https://docs.co
 
 ## How Conda works
 
+Software packages often depend on a large number of other software packages, which have to be specific versions. For reproducibility we often want to be able to run a specific version of a software package, but installing it system-wide may be difficult, because it can depend on specific versions of other packages that must be installed, which may be in conflict with other software packages we also want to install. Conda adresses this problem by allowing you to create isolated environments, in which it installs the correct versions of all software packages required to run your software package of interest. The two most important parts of conda are **Environments** and **Channels**.
+
++ **Environments**
+
+
++ **Channels** Channels are online collections of software packages in different versions. The two channels that may be most important for you are [conda-forge](https://conda-forge.org/docs/), which is a large channell containing a wide range of software packages and [bioconda](https://bioconda.github.io/), which is specific for bioinformatics. A package solver like [Mamba](https://mamba.readthedocs.io/en/latest/index.html) will take one or multiple software packages and their versions as input and will find and install the required software packages from the channels you provided.
+
 ## Creating a new environment
 
 First, start your conda in a local shell. Under UNIX-like operating systems (Linux, Mac) I do this by running
