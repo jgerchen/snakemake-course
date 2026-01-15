@@ -1,6 +1,6 @@
 # Make? Snake?
 
-This part will give you a bit of background into where the concepts that we will learning in this course are coming from.
+This part will give you a bit of background into where the concepts that we will learning in this course are coming from. 
 
 # The beginning: GNU make
 
@@ -19,5 +19,7 @@ In comparison to interpreted programming languages, compiled programming languag
 ![Cartoon from xkcd.com](https://imgs.xkcd.com/comics/compiling.png)
 Cartoon by [XKCD](https://xkcd.com/)
 
+Compile time can become a particular issue when you are developing software, where you often make small and incremental changes to your code. With every change you'd have to recompile your code to test it. GNU make was developed to mitigate these issues. 
 
+Surprisingly, despite the fact that first version of GNU make was published
 
