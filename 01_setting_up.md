@@ -98,6 +98,26 @@ Which should just output the installed version of Snakemake, in my case
 
 > 9.14.6
 
+## More useful conda commands
+
+You can find extensive documentation on conda commands [here](https://docs.conda.io/projects/conda/en/stable/commands/index.html). Here are some additional conda commands that I use commonly are:
+
++ List all conda environments and their locations
+
+```
+conda info --envs
+```
++ deactivate your currently active conda environment (will go back to either your regular shell environment or the conda environment, which was previously activated)
+
+```
+conda deactivate
+```
++ delete a conda environment (replace myenv with the name of the environment you want to remove)
+
+```
+conda remove --name myenv --all
+```
+
 
 
 
