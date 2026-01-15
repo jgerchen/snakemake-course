@@ -26,4 +26,25 @@ And after activating, it should indicate the **base** environment like this:
 
 > (base) fredo@krnpnq2:
 
+Now lets create a new environment, that we will use to install Snakemake. We can give it any name using the **-n** parameter, in this case we will call it snakemake.
+
+```
+conda create -n snakemake
+```
+It will show you some output and ask you if you want to proceed
+
+> Proceed ([y]/n)? 
+
+If you just press enter it will create your new environment, which we can activate using
+
+```
+conda activate snakemake
+```
+
+And after activating, your shell prompt should indicate that now your **snakemake** environment is activated, in my case like this:
+
+> (snakemake) fredo@krnpnq2:
+
+## Installing software
+
 
