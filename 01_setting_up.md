@@ -45,6 +45,15 @@ And after activating, your shell prompt should indicate that now your **snakemak
 
 > (snakemake) fredo@krnpnq2:
 
+> [!TIP]
+> You can directly activate environments you created (in this example your **snakemake** environemnt) from the shell using
+
+```
+source bin/activate snakemake
+```
+
+
+
 ## Installing software
 
 > [!WARNING]
