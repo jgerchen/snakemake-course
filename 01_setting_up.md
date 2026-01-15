@@ -47,4 +47,6 @@ And after activating, your shell prompt should indicate that now your **snakemak
 
 ## Installing software
 
+> [!WARNING]
+> Always make sure that the correct conda environment is activated before you install software. While it is also possible to install software into the base environment, you will sooner or later run into issues with incompatible versions and your conda will slow down substantially if you install your software into the base environemnt.
 
