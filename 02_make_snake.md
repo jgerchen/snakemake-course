@@ -17,5 +17,7 @@ In general, there are two major types of programming languages:
 In comparison to interpreted programming languages, compiled programming languages have the advantage at being much faster and potentially also more efficient at using memory, because the compiler can optimize code for the specific computing architecture and compiled programming languages also give more direct access to system functions and memory management to programmers, which also allows to write more optimized code. The downside to compiled languages is that compiling code takes time.
 
 ![Cartoon from xkcd.com](https://imgs.xkcd.com/comics/compiling.png)
+Cartoon by [XKCD](https://xkcd.com/)
+
 
 
