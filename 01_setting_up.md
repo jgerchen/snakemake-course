@@ -11,9 +11,19 @@ Before we start we first have to install Snakemake using [Conda](https://docs.co
 
 ## How Conda works
 
+## Creating a new environment
+
 First, start your conda in a local shell. Under UNIX-like operating systems (Linux, Mac) I do this by running
 ```
 source bin/activate
 ```
 
-In your local Conda folder.
+In your local Conda folder. After this the so-called **base** environment should be activated. You should also be able to see that the input prompt of your shell changes. In my case it looks like this before activating conda:
+
+> fredo@krnpnq2:
+
+And after activating, it should indicate the **base** environment like this:
+
+> (base) fredo@krnpnq2:
+
+
