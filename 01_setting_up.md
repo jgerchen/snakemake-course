@@ -11,5 +11,9 @@ Before we start we first have to install Snakemake using [Conda](https://docs.co
 
 ## How Conda works
 
+First, start your conda in a local shell. Under UNIX-like operating systems (Linux, Mac) I do this by running
+```
+source bin/activate
+```
 
-
+In your local Conda folder.
