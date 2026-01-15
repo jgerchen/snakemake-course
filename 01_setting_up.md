@@ -100,7 +100,7 @@ Which should just output the installed version of Snakemake, in my case
 
 ## More useful conda commands
 > [!TIP]
-> You can find extensive documentation on conda commands [here](https://docs.conda.io/projects/conda/en/stable/commands/index.html). Here are some additional conda commands that I use commonly are:
+> You can find extensive documentation on conda commands [here](https://docs.conda.io/projects/conda/en/stable/commands/index.html). Here are some additional conda commands that I use commonly:
 
 + List all conda environments and their locations
 
