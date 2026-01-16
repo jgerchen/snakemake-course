@@ -16,7 +16,7 @@ This course is intended for students of the Department of Botany at Charles Univ
 
 You should have basic knowledge of how to operate a UNIX environment (navigate the file system and run commands on the command line, create and edit scripts and text files) and have some idea of how a computing cluster like MetaCentrum works and how you can submit basic computing jobs to it. Snakemake code is written in the [Python programming language](https://www.python.org/), but I aim to explain any python code used in this course in detail, so you are not expected to know any python before. 
 
->###:snake: Python code
+>### :snake: Python code
 > I will explain specifics of python code in this way throughout the course material
 
 
