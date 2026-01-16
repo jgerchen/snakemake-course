@@ -37,12 +37,18 @@ However, in bioinformatics we often have additional requirements, for which GNU 
 
 + We may want to be more flexible in how we determine the order of rules. For example, when running simulations we often run the same job multiple times and then collect the results. So we would like to have some easy way to create multiple instances of the same task in parallel, which as far as I know is not a common thing you'd want to do in software development.
 
++ We want clearer and more readable code than GNU make, which can often look obscure and daunting to non-professional coders
+
 + We may want integration with a wider range of software packages and programming languages, which we'd have to implement by hand if we used GNU make
 
-+ We want clearer and more readable code than the professional programmers that use GNU make
 
 ## Snakemake
 
-Out of these and other considerations **Snakemake** was born. 
+Out of these and other considerations **Snakemake** was born. Snakemake is based on the principles underlying GNU make, and it can generate dependencies between files and determined the best way to run them and which jobs have to be rerun in the same way as GNU make. However, Snakemake is based on the [python programming language](https://www.python.org/) and it comes with a lot of additional functions that GNU make doesn't have. Specifically, Snakemake...
 
++ ...has support for different computing cluster architectures and support for building your own implementations of unsupported architectures
+
++ ...is based on python, which means that you can use python code to adjust how it does a job, which gives extreme flexibility to implement complex workflows with very little code. Also the underlying python code is clear and easily understandabke.
+
++ ...comes with a wide range of supported programming languages, software package management systems and cloud computing platforms
 
