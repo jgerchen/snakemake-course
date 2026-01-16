@@ -52,13 +52,13 @@ rule rule_1:
 
 The **shell** part indicates which shell command has to be run in order to create **file1.txt**.
 
-Now our first rule is complete, so lets see if we can run it via Snakemake. First, if you created the file file1.txt on the command line already delete it. Second, make sure your **snakemake conda environment** is activated on the shell your currently working. Then you can run Snakemake using the following command:
+Now our first rule is complete, so lets see if we can run it via Snakemake. First, if you created the file file1.txt on the command line already delete it. Second, make sure your **snakemake conda environment** is activated on the shell your currently working and that you're in the same directory as your Snakefile. Then you can run Snakemake using the following command:
 
 ```
 snakemake -j1
 ```
 
-Here we give just -j1 as a single parameter to the snakemake command. The -j parameter is required and tells snakemake how many jobs its supposed to run in parallel. Since at this point we're just running simple scripts locally we leave it at 1 for now and get back to it at a later point when we want to parallelize things.
+Here we give just -j1 as a single parameter to the snakemake command. The -j parameter is required and tells snakemake how many jobs its supposed to run in parallel. Since at this point we're just running simple scripts locally we leave it at 1 for now and get back to it at a later point when we want to parallelize things. Besides that Snakemake will automatically look for a file named **Snakefile** and try to generate the output of the first rule.
 
 This snakemake command should give you an output that ends like this:
 
@@ -74,6 +74,6 @@ This is because **file1.txt** already exists and Snakemake will only recreate it
 > [!IMPORTANT]
 > As long as their are reasons based on dependencies Snakemake will not recreate files that already exist.
 
-
+## My second rule!
 
 
