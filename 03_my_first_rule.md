@@ -15,9 +15,8 @@ We can now create our first rule definition. We tell Snakemake that we want to d
 rule rule_1:
 ```
 
-#### :snake: indentation
-
-As I wrote before, Snakemake is based on Python, so rules in Snakemake are written in an extended form of Python code. A big difference of Python to other programming languages is that indentation is an essential part of the code. This means that the way how parts of the code are moved to the right by inserting whitespace (tabs or multiple spaces) at the beginning of the line determine how python or Snakmake understand the structure of the code.
+>#### :snake: indentation
+>As I wrote before, Snakemake is based on Python, so rules in Snakemake are written in an extended form of Python code. A big difference of Python to other programming languages is that indentation is an essential part of the code. This means that the way how parts of the code are moved to the right by inserting whitespace (tabs or multiple spaces) at the beginning of the line determine how python or Snakmake understand the structure of the code.
 
 
 
