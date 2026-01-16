@@ -44,7 +44,7 @@ However, in bioinformatics we often have additional requirements, for which GNU 
 
 ## Snakemake
 
-Out of these and other considerations **Snakemake** was born. Snakemake is based on the principles underlying GNU make, and it can generate dependencies between files and determined the best way to run them and which jobs have to be rerun in the same way as GNU make. Similar to GNU make these dependencies are defined by **rules** in **Snakefiles**, the snakemake equivalent of GUN make's Makefiles. However, Snakemake is based on the [python programming language](https://www.python.org/) and it comes with a lot of additional functions that GNU make doesn't have. Specifically, Snakemake...
+Out of these and other considerations **Snakemake** was born. Snakemake is based on the principles underlying GNU make, and it can generate dependencies between files and determined the best way to run them and which jobs have to be rerun. Similar to GNU make these dependencies are defined by **rules** in **Snakefiles**, the snakemake equivalent of Makefiles. However, Snakemake is based on the [python programming language](https://www.python.org/) and it comes with a lot of additional features that GNU make doesn't have. Specifically, Snakemake...
 
 + ...has support for different computing cluster architectures and support for building your own implementations of unsupported architectures
 
