@@ -48,7 +48,7 @@ Out of these and other considerations **Snakemake** was born. Snakemake is based
 
 + ...has support for different computing cluster architectures and support for building your own implementations of unsupported architectures
 
-+ ...is based on python, which means that you can use python code to adjust how it does a job, which gives extreme flexibility to implement complex workflows with very little code. Also the underlying python code is clear and easily understandabke.
++ ...is based on python, which means that you can use python code to adjust how it does a job, which gives extreme flexibility to implement complex workflows with very little code. Also the underlying python code is clear and easily understandable.
 
 + ...comes with a wide range of supported programming languages, software package management systems and cloud computing platforms
 
