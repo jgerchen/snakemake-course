@@ -72,7 +72,7 @@ And you should notice that file1.txt should have been created in the same way as
 This is because **file1.txt** already exists and Snakemake will only recreate it again if we delete it.
 
 > [!IMPORTANT]
-> As long as their are no additional dependencies Snakemake will not recreate files that already exist.
+> As long as their are reasons based on dependencies Snakemake will not recreate files that already exist.
 
 
 
