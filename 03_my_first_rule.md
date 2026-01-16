@@ -52,7 +52,7 @@ rule rule_1:
 
 The **shell** part indicates which shell command has to be run in order to create **file1.txt**.
 
-Now our first rule is complete, so lets see if we can run it via Snakemake. First, if you created the file file1.txt on the command line already delete it. Second, make sure your **snakemake conda environment** is activated on the shell your currently working and that you're in the same directory as your Snakefile. Then you can run Snakemake using the following command:
+Now our first rule is complete, so lets see if we can run it via Snakemake. First, if you created the file file1.txt on the command line already delete it. Second, make sure your **snakemake conda environment** is activated on the shell your currently working on and that you're in the **same directory as your Snakefile**. Then you can run Snakemake using the following command:
 
 ```
 snakemake -j1
@@ -72,7 +72,7 @@ And you should notice that file1.txt should have been created in the same way as
 This is because **file1.txt** already exists and Snakemake will only recreate it again if we delete it.
 
 > [!IMPORTANT]
-> As long as their are reasons based on dependencies Snakemake will not recreate files that already exist.
+> As long as there are no additional reasons based on dependencies Snakemake will not recreate files that already exist. It also doesn't matter for Snakemake that the files generated using touch are completely empty, the only thing that matters for Snakemake are if a file exists and its timestamp.
 
 ## My second rule!
 
