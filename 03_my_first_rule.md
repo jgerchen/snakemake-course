@@ -52,10 +52,27 @@ rule rule_1:
 
 The **shell** part indicates which shell command has to be run in order to create **file1.txt**.
 
+Now our first rule is complete, so lets see if we can run it via Snakemake. First, if you created the file file1.txt on the command line already delete it. Second, make sure your **snakemake conda environment** is activated on the shell your currently working. Then you can run Snakemake using the following command:
 
+```
+snakemake -j1
+```
 
+Here we give just -j1 as a single parameter to the snakemake command. The -j parameter is required and tells snakemake how many jobs its supposed to run in parallel. Since at this point we're just running simple scripts locally we leave it at 1 for now and get back to it at a later point when we want to parallelize things.
 
+This snakemake command should give you an output that ends like this:
 
+>Finished jobid: 0 (Rule: rule_1)
+>1 of 1 steps (100%) done
+
+And you should notice that file1.txt should have been created in the same way as if we did it ourselves. Now if you rerun exactly the same command again you will get a different output, which should end like this:
+
+>Nothing to be done (all requested files are present and up to date).
+
+This is because **file1.txt** already exists and Snakemake will only recreate it again if we delete it.
+
+> [!IMPORTANT]
+> As long as their are no additional dependencies Snakemake will not recreate files that already exist.
 
 
 
