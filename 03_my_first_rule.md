@@ -8,13 +8,16 @@ The main building block of Snakemake workflows are called **Rules**. Basically, 
 
 Lets start by creating a simple example. First, create a folder somewhere on your file system in which we will create our practice workflow. In this folder create an empty textfile named **Snakefile** (capital S, no file extension). A Snakefile is snakemake's equivalent to GNU make's makefile, and it's the file in which we define the rules that we use to build our workflow.
 
-We can now create our first rule definition. We tell Snakemake that we want to define a rule with the keyword rule, followed by an arbitrary name (but without spaces or other ) and a colon (:), so for example if we want to define a rule named rule_1 we'd start by writing
+We can now create our first rule definition. We tell Snakemake that we want to define a rule with the keyword rule, followed by an arbitrary name (but without spaces or other special characters) and a colon (:), so for example if we want to define a rule named rule_1 we'd start by writing
 
 
 ```
 rule rule_1:
 ```
 
+#### Python basics: indentation
+
+As I wrote before, Snakemake is based on Python, so rules in Snakemake are written in an extended form of Python code. A big difference of Python to other programming languages is that indentation is an essential part of the code. This means that the way how parts of the code are moved to the right by inserting whitespace (tabs or multiple spaces) at the beginning of the line determine how python or Snakmake understand the structure of the code.
 
 
 
