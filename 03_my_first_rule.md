@@ -16,19 +16,45 @@ rule rule_1:
 ```
 
 >#### :snake: indentation
->As I wrote before, Snakemake is based on Python, so rules in Snakemake are written in an extended form of Python code. A big difference of Python to other programming languages is that indentation is an essential part of the code. This means that the way how parts of the code are moved to the right by inserting whitespace (tabs or multiple spaces) at the beginning of the line determines how python or Snakmake understand the structure of the code. Importantly, Python can use either tabs or multiple spaces as intendation, but its use has to be consistent across the file. The fact that tabs and multiple spaces are typically indistinguishable in most text editors can somtimes lead to issues when you open and edit a file that uses a different type of intendation.
+>As I wrote before, Snakemake is based on Python, so rules in Snakemake are written in an extended form of Python code. A big difference of Python to other programming languages is that indentation is an essential part of the code, while it is typically optional in other programming languages, but considered good practice to write readable code. This means that the way how parts of the code are moved to the right by inserting whitespace (tabs or multiple spaces) at the beginning of the line determines how python or Snakmake understand the structure of the code. Importantly, Python can use either tabs or multiple spaces as intendation, but its use has to be consistent across the file. The fact that tabs and multiple spaces are typically indistinguishable in most text editors can somtimes lead to issues when you open and edit a file that uses a different type of indentation.
 
 Now that we gave our first rule a name lets define a file that the rule is supposed to create. So for example lets say our rule is supposed to create a file called **file1.txt** in the same folder as the Snakefile. To do this we can define **file1.txt** as an output of **rule_1** in the following way:
 
 
 ```
 rule rule_1:
-    output: "rule1.txt"
+    output: "file1.txt"
 ```
 Note the intendation before the output statement, which tells Snakemake that the output part belongs to rule_1 and is not another independent python object.
 
 >#### :snake: text strings
->Note that the filename "rule1.txt" is written in paranthesis this is how we define a text string in python, which may be familiar to you from other programming languages like R.
+>Note that the filename "rule1.txt" is written in parantheses. This is one way to define a text string in python. The other is to use 'single quotes', which may have subtle differences in behaviour in some situations, which are not relevant at this point.
+
+Finally, we also have to define how **rule_1** is supposed to generate **file1.txt**. For the purpose of this exercise let's just use the UNIX **touch** command. If we run the command
+
+```
+touch file1.txt
+```
+
+on the command line it will do one of two things:
+
++ It will create an empty file called file1.txt if file1.txt does not exist
+
++ It will update the time stamp of file1.txt if file1.txt does exist
+
+So lets add this behaviour to **rule_1** in the following way
+
+```
+rule rule_1:
+    output: "file1.txt"
+    shell: "touch file1.txt"
+```
+
+The **shell** part indicates which shell command has to be run in order to create **file1.txt**.
+
+
+
+
 
 
 
