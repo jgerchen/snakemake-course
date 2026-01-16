@@ -23,7 +23,7 @@ Compile time can become a particular issue when you are developing software, whe
 
 GNU make was developed to automate this process, by determining which files depend on which other files and what parts of a software project will have to be recompiled when something changes. It also automatically determines the proper order for updating files. As a result, if you change a few files and then run Make, it does not need to recompile all of your program. It updates only those files that depend directly or indirectly on the source files that you changed. GNU make does this by building a graph of dependencies between files, which are defined by **rules** in so-called **Makefiles**.
 
-## Bioinformatics applications
+## Bioinformatics
 
 When we look at a typical bioinformatics project, we often run into similar issues that GNU make addresses in software development projects:
 
@@ -42,7 +42,7 @@ However, in bioinformatics we often have additional requirements, for which GNU 
 + We may want integration with a wider range of software packages and programming languages, which we'd have to implement by hand if we used GNU make
 
 
-## Snakemake
+# Snakemake
 
 Out of these and other considerations **Snakemake** was born. Snakemake is based on the principles underlying GNU make, and it can generate dependencies between files and determine the best way to run them and which jobs have to be rerun. Similar to GNU make these dependencies are defined by **rules** in **Snakefiles**, the snakemake equivalent of Makefiles. However, Snakemake is based on the [python programming language](https://www.python.org/) and it comes with a lot of additional features that GNU make doesn't have. Specifically, Snakemake...
 
