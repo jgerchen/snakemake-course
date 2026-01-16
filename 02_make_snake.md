@@ -21,7 +21,7 @@ Cartoon by [XKCD](https://xkcd.com/)
 
 Compile time can become a particular issue when you are developing software, where you often make small and incremental changes to your code. With every change you'd have to recompile your code to test it. However, more complex computer programs are commonly written in a modular way, so that different components of the software are split across different files. These individual files can be compiled separately and are then linked together to make the finished executable program. This approach has numerous advantages, because such a structured codebase is easier to understand and maintain and it allows to easily implement code with general functions written by other people that can be reused. Importantly, it also means that only parts of the code have to be re-compiled when changes are made, which can dramatically speed up compile times. 
 
-GNU make was developed to automate this process, by determining which files depend on which other files and what parts of a software project will have to be recompiled when something changes. It also automatically determines the proper order for updating files. As a result, if you change a few files and then run Make, it does not need to recompile all of your program. It updates only those files that depend directly or indirectly on the source files that you changed. GNU make does this by building a graph of dependencies between files, which are defined by so-called rules in so-called Makefiles.
+GNU make was developed to automate this process, by determining which files depend on which other files and what parts of a software project will have to be recompiled when something changes. It also automatically determines the proper order for updating files. As a result, if you change a few files and then run Make, it does not need to recompile all of your program. It updates only those files that depend directly or indirectly on the source files that you changed. GNU make does this by building a graph of dependencies between files, which are defined by **rules** in so-called **Makefiles**.
 
 ## Bioinformatics applications
 
@@ -44,7 +44,7 @@ However, in bioinformatics we often have additional requirements, for which GNU 
 
 ## Snakemake
 
-Out of these and other considerations **Snakemake** was born. Snakemake is based on the principles underlying GNU make, and it can generate dependencies between files and determined the best way to run them and which jobs have to be rerun in the same way as GNU make. However, Snakemake is based on the [python programming language](https://www.python.org/) and it comes with a lot of additional functions that GNU make doesn't have. Specifically, Snakemake...
+Out of these and other considerations **Snakemake** was born. Snakemake is based on the principles underlying GNU make, and it can generate dependencies between files and determined the best way to run them and which jobs have to be rerun in the same way as GNU make. Similar to GNU make these dependencies are defined by **rules** in **Snakefiles**, the snakemake equivalent of GUN make's Makefiles. However, Snakemake is based on the [python programming language](https://www.python.org/) and it comes with a lot of additional functions that GNU make doesn't have. Specifically, Snakemake...
 
 + ...has support for different computing cluster architectures and support for building your own implementations of unsupported architectures
 
