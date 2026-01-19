@@ -162,7 +162,7 @@ If you want Snakemake to use the Conda environment you defined you have to run i
 
 ## Your turn: run a slimulation and make a simple plot based on its output!
 
-Now it's your turn to apply what you learned in the previous part and to build a simple two rule system, which the first rule runs an individual based simulation using SLiM (aka a **slimulation**) and the second rule takes its output and generates a plot of the data.
+Now it's your turn to apply what you learned in the previous part and to build a simple two rule system, in which the first rule runs an individual based simulation using SLiM (aka a **slimulation**) and the second rule takes its output and generates a plot of the data.
 
 You will find two scripts in the [scripts folder for this session](scripts/03_my_first_rule):
 
