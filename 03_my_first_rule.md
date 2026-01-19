@@ -75,6 +75,39 @@ This is because **file1.txt** already exists and Snakemake will only recreate it
 
 ## My second rule!
 
+Now let's introduce **dependencies between files**. File dependencies are the essential parts that structure a Snakemake workflow. So let's create a new rule which creates a new file called **file2.txt**, which depends on the presence of **file1.txt**, which we created in the first step. For simplicity, let's assume file2.txt is simply a copy of file1.txt, which we can generate with the shell command
+```
+cp file1.txt file2.txt
+```
+To integrate this into your Snakemake workflow add a second rule, called **rule_2** to the bottom of your **Snakefile** like this
+
+```
+rule rule_2:
+    input: "file1.txt"
+    output: "file2.txt"
+    shell: "cp file1.txt file2.txt"
+```
+First, note that there is no indentation in the first line, where we define the rule. This tells Snakemake that we left the scope of the previous rule object and we are starting a new one. Second, note that we added the **input** part, which contains the output of rule_1 (**file1.txt**). Now let's do a few things with this two rule system to better understand how Snakemake works.
+If we rerun Snakemake with the previous command
+
+```
+snakemake -j1
+```
+
+It will give us the output
+
+>Nothing to be done (all requested files are present and up to date).
+
+And it will not create **file2.txt**. This is because without any additional parameters will only run the the **first rule in the Snakefile, but nothing else**. We could change this by moving rule_2 to the top of the Snakefile, or we could tell Snakemake explicitely which file to generate, in this case file2.txt. To do this, we have to give the filename of our desired output file to the snakemake command like this
+
+```
+snakemake -j1 file2.txt
+```
+
+
+
+
+
 ## Loading software using Conda
 
 We saw how to create a conda environment, how to install software and how to activate it in the previous chapter. We can tell Snakemake to do all of this for us automatically by adding a **conda** environment definition file to a rule.
@@ -97,7 +130,7 @@ dependencies:
   - r-base
 ```
 
-So in your yaml file you have to provide a list of channels and a list of dependencies. In this case this would install R in Conda. If we want to install a specific version of a software package we can define it directly, so if we want to install R version 4.52 we could change the yaml file to
+So in your yaml file you have to provide a list of channels and a list of dependencies. In this case this would create a new conda environemnt and install **R** in it. If we want to install a specific version of a software package we can define it directly, so if we want to install R version 4.52 we could change the yaml file to
 
 ```
   - r-base=4.52
@@ -106,7 +139,7 @@ So in your yaml file you have to provide a list of channels and a list of depend
 If you want Snakemake to use the Conda environment you defined you have to run it with the addtional parameter **--use-conda**. Snakemake will then create a local conda environment the first time you run it or load the conda environment for a specific rule if it already was created in its local directory of temporary files. You can also tell Snakemake to use the mamba package solver for installing conda environments (which is faster than the default and can in sometimes install more recent software versions) by adding the option **--conda-frontend 'mamba'** to your Snakemake command.
 
 > [!NOTE]
-> Snakemake stores lots of Metainformation about your Snakemake workflow in a hidden folder called **.snakemake** in the directory were you run your workflow. This folder is also where Snakemake puts the conda environemnts it creates, but you can change this to a different folder using by adding the **--conda-prefix** parameter command to your snakemake command.
+> Snakemake stores lots of Metainformation about your Snakemake workflow in a hidden folder called **.snakemake** in the directory were you run your workflow. This folder is also where Snakemake puts the conda environments it creates, but you can change this to a different folder using by adding the **--conda-prefix** parameter command to your snakemake command.
 
 
 
