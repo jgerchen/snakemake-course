@@ -202,7 +202,7 @@ Now build a new workflow that links together these two scripts in a simple two r
 + Download the slim and R scripts from GitHub into your local folder
 
 > [!TIP]
-> You can directly download scripts from GitHub using the command line. Im portantly you have to use the so-called raw file output of GitHub, otherwise it will also download html formatting. When you go to a GitHub page of a script you can find a small button labeled raw on the top right.
+> You can directly download scripts from GitHub using the command line. Im portantly you have to use the so-called raw file output of GitHub, otherwise it will also download html formatting. When you go to a GitHub page of a script you can find a small button labeled **Raw** on the top right.
 >
 > ![raw button](images/03_my_first_rule/03_raw_output.png)
 >
