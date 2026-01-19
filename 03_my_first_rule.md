@@ -104,7 +104,7 @@ And it will not create **file2.txt**. This is because without any additional par
 snakemake -j1 file2.txt
 ```
 
-Now to better understand how dependencies work lets first **delete file1.txt and file2.txt**. Now if your rerun the previous command Snakemake will create **both file1.txt and file2.txt**, although we only told it to create file1.txt. This is because of the depedencies: we told Snakemake that **file2.txt** depends on **file1.txt**, so it knows it has to create **file1.txt** before it can create **file2.txt**.
+Now to better understand how dependencies work lets first **delete file1.txt and file2.txt**. Now if your rerun the previous command Snakemake will create **both file1.txt and file2.txt**, although we only told it to create **file2.txt**. This is because of the depedencies: we told Snakemake that **file2.txt** depends on **file1.txt**, so it knows it has to create **file1.txt** before it can create **file2.txt**.
 
 Now lets remove both files again, but this time we create **file1.txt** by hand using
 
@@ -149,7 +149,7 @@ dependencies:
   - r-base
 ```
 
-So in your yaml file you have to provide a list of channels and a list of dependencies. In this case this would create a new conda environemnt and install **R** in it. If we want to install a specific version of a software package we can define it directly, so if we want to install R version 4.52 we could change the yaml file to
+So in your yaml file you have to provide a list of channels and a list of dependencies. In this case this would create a new conda environemnt and install **R** in it. If we want to install a specific version of a software package we can define it directly, so if we want to install R version 4.52 we could change the entry in the yaml file to
 
 ```
   - r-base=4.52
@@ -159,6 +159,8 @@ If you want Snakemake to use the Conda environment you defined you have to run i
 
 > [!NOTE]
 > Snakemake stores lots of Metainformation about your Snakemake workflow in a hidden folder called **.snakemake** in the directory were you run your workflow. This folder is also where Snakemake puts the conda environments it creates, but you can change this to a different folder using by adding the **--conda-prefix** parameter command to your snakemake command.
+
+## Your turn: run a slimulation and make a simple plot based on its output!
 
 
 
