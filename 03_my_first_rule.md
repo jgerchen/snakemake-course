@@ -172,10 +172,10 @@ You will find two scripts in the [scripts folder for this session](scripts/03_my
 slim 03_slimulation.slim
 ```
 
-+ [03_plot_vcf.R](scripts/03_my_first_rule/03_plot_vcf.R): this is an R script that takes a VCF file as first input parameter (**input_file** below) and generates an output file (**output_file** below) as second parameter. So to run this on the command line you'd have to use a command like this:
++ [03_plot_vcf.R](scripts/03_my_first_rule/03_plot_vcf.R): this is an R script that takes a VCF file as first input parameter (**input_vcf** below) and generates an output file (**output_file** below) as second parameter. So to run this on the command line you'd have to use a command like this:
 
 ```
-Rscript vcf_file output_file
+Rscript vcf_file input_vcf output_file
 ```
 
 Both scripts have software dependencies you should have Snakemake install automatically using conda:
@@ -202,7 +202,7 @@ Now build a new workflow that links together these two scripts in a simple two r
 + Download the slim and R scripts from GitHub into your local folder
 
 > [!TIP]
-> You can directly download scripts from GitHub using the command line. Im portantly you have to use the so-called raw file output of GitHub, otherwise it will also download html formatting. When you go to a GitHub page of a script you can find a small button labeled **Raw** on the top right.
+> You can directly download scripts from GitHub using the command line. Importantly you have to use the so-called raw file output of GitHub, otherwise it will also download html formatting. When you go to a GitHub page of a script you can find a small button labeled **Raw** on the top right.
 >
 > ![raw button](images/03_my_first_rule/03_raw_output.png)
 >
