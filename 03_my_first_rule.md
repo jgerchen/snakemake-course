@@ -184,7 +184,7 @@ Both scripts have software dependencies you should have Snakemake install automa
 
 + For the R script we want an environment that includes
     + R (the package is called [r-base](https://anaconda.org/channels/conda-forge/packages/r-base/overview) and is on the conda-forge channel)
-    + vcfR, which is an R package, whcih is used to read the VCF file into R (the package is called [r-vcfr](https://anaconda.org/channels/bioconda/packages/r-vcfr/overview) and is on bioconda)
+    + vcfR, which is an R package, which is used to read the VCF file into R (the package is called [r-vcfr](https://anaconda.org/channels/bioconda/packages/r-vcfr/overview) and is on bioconda)
 
 > [!TIP]
 > If you use an R version installed via conda it is often helpful to also install R packages via conda too, instead of the buildin installation option via CRAN. Otherwise you can run into weird issues if R tries to install into a package folder used by your own local R installation.
