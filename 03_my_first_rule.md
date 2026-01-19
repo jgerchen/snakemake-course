@@ -166,7 +166,7 @@ Now it's your turn to apply what you learned in the previous part and to build a
 
 You will find two scripts in the [scripts folder for this session](scripts/03_my_first_rule):
 
-+ [03_slimulation.slim](scripts/03_my_first_rule/03_slimulation.slim): this is the input file that defines how our slimulations behave. This is a simple model, which simulates a single 1 Mb chromosome, which is neutrally evolving at constant population size of 500 individuals based on a basic Wright-Fisher model. After 10000 generations it will output the genotypes of a sample of 50 individuals and write them to a VCF file called **03_slim_output.vcf**. If slim is installed, it can be run using the command
++ [03_slimulation.slim](scripts/03_my_first_rule/03_slimulation.slim): this is the input file for SLiM that defines how your slimulation behaves. This is a simple model, which simulates a single 1 Mb chromosome, which is neutrally evolving at constant population size of 500 individuals based on a basic Wright-Fisher model. After 10000 generations it will output the genotypes of a sample of 50 individuals and write them to a VCF file called **03_slim_output.vcf**. If slim is installed, it can be run using the command
 
 ```
 slim 03_slimulation.slim
@@ -180,7 +180,7 @@ Rscript vcf_file output_file
 
 Both scripts have software dependencies you should have Snakemake install automatically using conda:
 
-+ For slim we want the latest version (5.1), which is found on the [bioconda channel](https://anaconda.org/channels/conda-forge/packages/slim/overview)
++ For SLiM we want the latest version (5.1), which is found on the [bioconda channel](https://anaconda.org/channels/conda-forge/packages/slim/overview)
 
 + For the R script we want an environment that includes
     + R (the package is called [r-base](https://anaconda.org/channels/conda-forge/packages/r-base/overview))
@@ -189,7 +189,28 @@ Both scripts have software dependencies you should have Snakemake install automa
 > [!TIP]
 > If you use an R version installed via conda it is often helpful to also install R packages via conda too, instead of the buildin installation option via CRAN. Otherwise you can run into weird issues if R tries to install into a package folder used by your own local R installation.
 
+Now build a new workflow that links together these two scripts in a simple two rule system. To do this follow the following steps:
 
++ leave your current folder and create and enter a new folder for your new workflow
+
++ create a new **Snakefile**
+
++ Make two rules, one for SLiM and one for the R script that takes the slim output
+
++ Each rule should have its own Conda environment, one for slim and one for R and R packages
+
++ Download the slim and R scripts from GitHub into your local folder
+
+> [!TIP]
+> You can directly download scripts from GitHub using the command line. Im portantly you have to use the so-called raw file output of GitHub, otherwise it will also download html formatting. When you go to a GitHub page of a script you can find a small button labeled raw on the top right.
+> ![raw button](images/03_my_first_rule/03_raw_output.png)
+> If you copy the link it contains you can directly download the file using the **wget** command like this for the slim input file:
+
+```
+wget https://github.com/jgerchen/snakemake-course/raw/refs/heads/main/scripts/03_my_first_rule/03_slimulation.slim
+```
+
++ Finally run your workflow and admire the popgen output!
 
 
 
