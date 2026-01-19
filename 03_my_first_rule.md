@@ -16,10 +16,9 @@ rule rule_1:
 ```
 
 >#### :snake: indentation
->As I wrote before, Snakemake is based on Python, so rules in Snakemake are written in an extended form of Python code. A big difference of Python to other programming languages is that indentation is an essential part of the code, while it is typically optional in other programming languages, but considered good practice to write readable code. This means that the way how parts of the code are moved to the right by inserting whitespace (tabs or multiple spaces) at the beginning of the line determines how python or Snakmake understand the structure of the code. Importantly, Python can use either tabs or multiple spaces as intendation, but its use has to be consistent across the file. The fact that tabs and multiple spaces are typically indistinguishable in most text editors can somtimes lead to issues when you open and edit a file that uses a different type of indentation.
+>As I wrote before, Snakemake is based on Python, so rules in Snakemake are written in an extended form of Python code. A big difference of Python to other programming languages is that indentation is an essential part of the code, while it is typically optional in other programming languages, but considered good practice to write readable code. This means that the way how parts of the code are moved to the right by inserting whitespace (tabs or multiple spaces) at the beginning of the line determines how python or Snakmake understand the structure of the code. Importantly, Python can use either tabs or multiple spaces as indentation, but its use has to be consistent across the file. The fact that tabs and multiple spaces are typically indistinguishable in most text editors can somtimes lead to issues when you open and edit a file that uses a different type of indentation.
 
 Now that we gave our first rule a name lets define a file that the rule is supposed to create. So for example lets say our rule is supposed to create a file called **file1.txt** in the same folder as the Snakefile. To do this we can define **file1.txt** as an output of **rule_1** in the following way:
-
 
 ```
 rule rule_1:
@@ -75,5 +74,50 @@ This is because **file1.txt** already exists and Snakemake will only recreate it
 > As long as there are no additional reasons based on dependencies Snakemake will not recreate files that already exist. It also doesn't matter for Snakemake that the files generated using touch are completely empty, the only thing that matters for Snakemake are if a file exists and its timestamp.
 
 ## My second rule!
+
+## Loading software using Conda
+
+We saw how to create a conda environment, how to install software and how to activate it in the previous chapter. We can tell Snakemake to do all of this for us automatically by adding a **conda** environment definition file to a rule.
+
+For our rule_1 this would look like this:
+
+```
+rule rule_1:
+    output: "file1.txt"
+    conda: "envs/rule1.yaml"
+    shell: "touch file1.txt"
+```
+
+Here envs/rule1.yaml points to a file, which desired defines the content of our conda environment and which we have to create ourselves. First, create a folder called envs on your practice workflow folder. Second, create a new text file called rule1.yaml in this folder. This file is build up like in the following example:
+
+```
+channels:
+  - conda-forge
+dependencies:
+  - r-base
+```
+
+So in your yaml file you have to provide a list of channels and a list of dependencies. In this case this would install R in Conda. If we want to install a specific version of a software package we can define it directly, so if we want to install R version 4.52 we could change the yaml file to
+
+```
+  - r-base=4.52
+```
+
+If you want Snakemake to use the Conda environment you defined you have to run it with the addtional parameter **--use-conda**. Snakemake will then create a local conda environment the first time you run it or load the conda environment for a specific rule if it already was created in its local directory of temporary files. You can also tell Snakemake to use the mamba package solver for installing conda environments (which is faster than the default and can in sometimes install more recent software versions) by adding the option **--conda-frontend 'mamba'** to your Snakemake command.
+
+> [!NOTE]
+> Snakemake stores lots of Metainformation about your Snakemake workflow in a hidden folder called **.snakemake** in the directory were you run your workflow. This folder is also where Snakemake puts the conda environemnts it creates, but you can change this to a different folder using by adding the **--conda-prefix** parameter command to your snakemake command.
+
+
+
+
+
+
+
+
+
+
+
+
 
 

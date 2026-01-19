@@ -1,4 +1,4 @@
-# 1. Setting up Snakemake using Conda
+# 2. Setting up Snakemake using Conda
 
 ## Conda
 

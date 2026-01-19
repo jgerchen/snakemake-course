@@ -44,6 +44,8 @@ I also don't know how long individual parts will take beforehand, so I will stru
 
 ## Lessons
 
-[01. Setting up Snakemake using Conda](01_setting_up.md)
+[01. Make? Snake?](02_make_snake.md)
 
-[02. Make? Snake?](02_make_snake.md)
+[02. Setting up Snakemake using Conda](01_setting_up.md)
+
+[03. My first rule!](03_my_first_rule.md)
