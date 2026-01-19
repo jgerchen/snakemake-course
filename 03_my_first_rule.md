@@ -75,7 +75,7 @@ This is because **file1.txt** already exists and Snakemake will only recreate it
 
 ## My second rule!
 
-Now let's introduce **dependencies between files**. File dependencies are the essential parts that structure a Snakemake workflow. So let's create a new rule which creates a new file called **file2.txt**, which depends on the presence of **file1.txt**, which we created in the first step. For simplicity, let's assume file2.txt is simply a copy of file1.txt, which we can generate with the shell command
+Now let's introduce **dependencies between files**. File dependencies are the essential components that structure a Snakemake workflow. So let's create a new rule which creates a new file called **file2.txt**, which depends on the presence of **file1.txt**, which we created in the first step. For simplicity, let's assume file2.txt is simply a copy of file1.txt, which we can generate with the shell command
 ```
 cp file1.txt file2.txt
 ```
