@@ -203,7 +203,9 @@ Now build a new workflow that links together these two scripts in a simple two r
 
 > [!TIP]
 > You can directly download scripts from GitHub using the command line. Im portantly you have to use the so-called raw file output of GitHub, otherwise it will also download html formatting. When you go to a GitHub page of a script you can find a small button labeled raw on the top right.
+>
 > ![raw button](images/03_my_first_rule/03_raw_output.png)
+>
 > If you copy the link it contains you can directly download the file using the **wget** command like this for the slim input file:
 
 ```
