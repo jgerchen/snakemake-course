@@ -162,7 +162,7 @@ If you want Snakemake to use the Conda environment you defined you have to run i
 
 ## Your turn: run a slimulation and make a simple plot based on its output!
 
-Now it's your turn to apply what you learned in the previous part and to build a simple two rule system, in which the first rule runs an individual based simulation using SLiM (aka a **slimulation**) and the second rule takes its output and generates a plot of the data.
+Now it's your turn to apply what you learned in the previous part and to build a simple two rule system, in which the first rule runs an individual based simulation using SLiM (aka a **slimulation**) and the second rule takes its output and generates a plot of its site frequency spectrum (SFS).
 
 You will find two scripts in the [scripts folder for this session](scripts/03_my_first_rule):
 
@@ -172,7 +172,7 @@ You will find two scripts in the [scripts folder for this session](scripts/03_my
 slim 03_slimulation.slim
 ```
 
-+ [03_plot_vcf.R](scripts/03_my_first_rule/03_plot_vcf.R): this is an R script that takes a VCF file as first input parameter (**input_vcf** below) and generates an output file (**output_file** below) as second parameter. So to run this on the command line you'd have to use a command like this:
++ [03_plot_vcf.R](scripts/03_my_first_rule/03_plot_vcf.R): this is an R script that takes a VCF file as first input parameter (**input_vcf** below) and generates an output pdf file (**output_file** below) as second parameter. So to run this on the command line you'd have to use a command like this:
 
 ```
 Rscript vcf_file input_vcf output_file
@@ -183,8 +183,8 @@ Both scripts have software dependencies you should have Snakemake install automa
 + For SLiM we want the latest version (5.1), which is found on the [bioconda channel](https://anaconda.org/channels/conda-forge/packages/slim/overview)
 
 + For the R script we want an environment that includes
-    + R (the package is called [r-base](https://anaconda.org/channels/conda-forge/packages/r-base/overview))
-    + the R package vcfR for reading VCF files into R (the package is called [r-vcfr](https://anaconda.org/channels/bioconda/packages/r-vcfr/overview))
+    + R (the package is called [r-base](https://anaconda.org/channels/conda-forge/packages/r-base/overview) and is on the conda-forge channel)
+    + vcfR, which is an R package, whcih is used to read the VCF file into R (the package is called [r-vcfr](https://anaconda.org/channels/bioconda/packages/r-vcfr/overview) and is on bioconda)
 
 > [!TIP]
 > If you use an R version installed via conda it is often helpful to also install R packages via conda too, instead of the buildin installation option via CRAN. Otherwise you can run into weird issues if R tries to install into a package folder used by your own local R installation.
@@ -197,7 +197,7 @@ Now build a new workflow that links together these two scripts in a simple two r
 
 + Make two rules, one for SLiM and one for the R script that takes the slim output
 
-+ Each rule should have its own Conda environment, one for slim and one for R and R packages
++ Each rule should have its own Conda environment
 
 + Download the slim and R scripts from GitHub into your local folder
 
@@ -212,10 +212,5 @@ Now build a new workflow that links together these two scripts in a simple two r
 wget https://github.com/jgerchen/snakemake-course/raw/refs/heads/main/scripts/03_my_first_rule/03_slimulation.slim
 ```
 
-+ Finally run your workflow and admire the popgen output!
-
-
-
-
-
++ Finally run your workflow and admire your SFS!
 
