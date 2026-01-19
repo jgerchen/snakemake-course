@@ -1,4 +1,4 @@
-# 2. Make? Snake?
+# 1. Make? Snake?
 
 This part will give you a bit of background into where the concepts that we will learning in this course are coming from. 
 
