@@ -164,10 +164,27 @@ If you want Snakemake to use the Conda environment you defined you have to run i
 
 Now it's your turn to apply what you learned in the previous part and to build a simple two rule system, which the first rule runs an individual based simulation using SLiM (aka a **slimulation**) and the second rule takes its output and generates a plot of the data.
 
+You will find two scripts in the [scripts folder for this session](scripts/03_my_first_rule):
 
++ [03_slimulation.slim](scripts/03_my_first_rule/03_slimulation.slim): this is the input file that defines how our slimulations behave. This is a simple model, which simulates a single 1 Mb chromosome, which is neutrally evolving at constant population size of 500 individuals based on a basic Wright-Fisher model. After 10000 generations it will output the genotypes of a sample of 50 individuals and write them to a VCF file called **03_slim_output.vcf**. If slim is installed, it can be run using the command
 
+```
+slim 03_slimulation.slim
+```
 
++ [03_plot_vcf.R](scripts/03_my_first_rule/03_plot_vcf.R): this is an R script that takes a VCF file as first input parameter (**input_file** below) and generates an output file (**output_file** below) as second parameter. So to run this on the command line you'd have to use a command like this:
 
+```
+Rscript vcf_file output_file
+```
+
+Both scripts have software dependencies you should have Snakemake install automatically using conda:
+
++ For slim we want the latest version (5.1), which is found on the [bioconda channel](https://anaconda.org/channels/conda-forge/packages/slim/overview)
+
++ For the R script we want an environment that includes
+    + R (the package is called [r-base](https://anaconda.org/channels/conda-forge/packages/r-base/overview))
+    + vcfR for reading VCF files into R (the package is called [r-vcfr](https://anaconda.org/channels/bioconda/packages/r-vcfr/overview))
 
 
 
