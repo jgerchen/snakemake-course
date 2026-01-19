@@ -172,10 +172,10 @@ You will find two scripts in the [scripts folder for this session](scripts/03_my
 slim 03_slimulation.slim
 ```
 
-+ [03_plot_vcf.R](scripts/03_my_first_rule/03_plot_vcf.R): this is an R script that takes a VCF file as first input parameter (**input_vcf** below) and generates an output pdf file (**output_file** below) as second parameter. So to run this on the command line you'd have to use a command like this:
++ [03_plot_vcf.R](scripts/03_my_first_rule/03_plot_vcf.R): this is an R script that takes a VCF file as first input parameter (**input.vcf** below) and generates an output pdf file (**output.pdf** below) as second parameter. So to run this on the command line you'd have to use a command like this (adjust input.pdf and output.pdf as you need):
 
 ```
-Rscript vcf_file input_vcf output_file
+Rscript 03_plot_vcf.R input.vcf output.pdf
 ```
 
 Both scripts have software dependencies you should have Snakemake install automatically using conda:
