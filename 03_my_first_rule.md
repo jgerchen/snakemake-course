@@ -98,15 +98,34 @@ It will give us the output
 
 >Nothing to be done (all requested files are present and up to date).
 
-And it will not create **file2.txt**. This is because without any additional parameters will only run the the **first rule in the Snakefile, but nothing else**. We could change this by moving rule_2 to the top of the Snakefile, or we could tell Snakemake explicitely which file to generate, in this case file2.txt. To do this, we have to give the filename of our desired output file to the snakemake command like this
+And it will not create **file2.txt**. This is because without any additional parameters will only run the the **first rule in the Snakefile, but nothing else**. We could change this by moving rule_2 to the top of the Snakefile, or we could tell Snakemake explicitely which file to generate, in this case file2.txt. To do this, we have to give the filename of our desired output file to the snakemake command like this and Snakemake will create file2.txt.
 
 ```
 snakemake -j1 file2.txt
 ```
 
+Now to better understand how dependencies work lets first **delete file1.txt and file2.txt**. Now if your rerun the previous command Snakemake will create **both file1.txt and file2.txt**, although we only told it to create file1.txt. This is because of the depedencies: we told Snakemake that **file2.txt** depends on **file1.txt**, so it knows it has to create **file1.txt** before it can create **file2.txt**.
 
+Now lets remove both files again, but this time we create **file1.txt** by hand using
 
+```
+touch file1.txt
+```
 
+Now if we rerun the same Snakemake command it will **only create file2.txt**. This is because the dependency **file1.txt** already exists. 
+
+> [!IMPORTANT]
+> It doesn't matter for Snakemake if a dependency is based on a rule or a file that already exists. 
+
+Now finally let's rerun
+
+```
+touch file1.txt
+```
+Now if we rerun Snakemake it will **create file2.txt again, despite the fact that it already exists.** Why is that? If you remember the earlier part of this session, when we run **touch** on a file that already exists, it will only **update that files time stamp**. Snakemake sees that the time stamp of **file2.txt** is now younger than that of **file1.txt** and the dependency of **file2.txt** on **file1.txt** implies that we also have to update file2.txt. 
+
+> [!IMPORTANT]
+> Time stamps are an essential part, which Snakemake uses to decide if a rule is supposed to be rerun. 
 
 ## Loading software using Conda
 
