@@ -64,8 +64,22 @@ In the previous shell part we used the {input} variable to point to the input pa
 cat file1.txt file2.txt > file3.txt"
 ```
 
-This makes sense for a command like cat, where we can just list any number of files that will then get concatenated. However, in most situations where we have multiple input or output files we want to use one file in a specific part of our shell command and another one in a different part. For this purpose we can give these files names and specifically address them using input or output variables.
+This makes sense for a command like cat, where we can just list any number of files that will then get concatenated. However, in most situations where we have multiple input or output files we want to use one file in a specific part of our shell command and another one in a different part. For this purpose we can give these files names and specifically address them using input or output variables. We can change **rule_3** in the following way to name our input variables
 
+```
+rule rule3:
+    input: 
+        f1="file1.txt",
+        f2="file2.txt"
+    output: "file3.txt"
+    shell: "cat {input.f2} {input.f1} > {output}"
+```
+
+We can name variables by putting an arbitrary name (again no whitespace or special characters) and an equal sign before defining each file and we can then access that file by adding a dot and that name to each shell variable inside the curly brackets. Note that by accessing the files specifically, we changed the order in which cat will concatenate both files, so that the content of **file2** will now be on top of the content of **file1** in the output file and the shell command that will be run is as follows
+
+```
+cat file2.txt file1.txt > file3.txt"
+```
 
 ## Building complex workflows
 
