@@ -42,14 +42,20 @@ rule rule_6:
 	shell: "cat {input.f2} {input.f2} {input.f3} {input.f1} > {output}"
 
 rule rule_8:
-	input: "file7.txt",
+	input: 
+		"file7.txt",
+		"file3.txt"
 	output: "file8.txt"
-	shell: "cp {input} {output}"
-
+	shell: "cat {input} {output}"
+rule rule_3:
+	input: "file1.txt"
+	output: "file11.txt"
+	shell: "cat {input} {output}"
 
 rule rule_5:
 	input: 
 		"file1.txt",
-		"file4.txt"
+		"file4.txt",
+		"file11.txt"
 	output: "file5.txt"
 	shell: "cat {input} > {output}"
