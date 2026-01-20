@@ -91,8 +91,9 @@ As explained before, you can download it directly using **wget** and the raw fil
 
 
 ```
-wget 
+wget https://github.com/jgerchen/snakemake-course/raw/refs/heads/main/scripts/04_branches_and_variables/Snakefile 
 ```
+
 
 
 
