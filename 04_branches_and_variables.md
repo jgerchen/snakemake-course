@@ -85,6 +85,14 @@ cat file2.txt file1.txt > file3.txt
 
 Now that we can define rules with multiple input and output files we already have tools at hand that allow us to build some pretty complex workflows. In the following part we will explore how these more complex workflows are resolved and run by Snakemake and how we can visualize them to keep the overview over our workflows.
 
+For this part we will be looking at a more complex Snakefile I put [in the scripts folder](scripts/04_branches_and_variables/Snakefile).
+
+As explained before, you can download it directly using **wget** and the raw file from Github with the following command
+
+
+```
+wget 
+```
 
 
 
