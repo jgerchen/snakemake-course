@@ -111,5 +111,38 @@ Also note that Snakemake automatically ordered the rules **despite their order b
 > [!important]
 > Snakemake doesn't care about the order of your rules in your Snakefile. The only thing that matters are the dependencies between rules, which will define the order in which files are run.
 
+## Plotting our Snakemake jobs visually
+
+Another way of asking Snakemake what it would do if we ask it to generate a specific file is to tell it to generate a plot of dependencies. To do this we have to add the option --dag, which outputs a plot in the dot file format format. Currently there is an unresolved bug in Snakemake which adds an additional output line at the head of the output, which confuses programs that can plot dot files, so we have to do a bit of a hacky workaround to get a working file. For output **file8.txt** we can generate the dot file in the following way:
+
+```
+snakemake -n file8.txt --dag | tail -n +2 > graph.dot
+```
+
+Here we redirect the output of the Snakemake command into the **tail** command, which we use to remove the first line and redirect its output into the file **graph.dot**.
+
+We can turn the dot file into an image file using the graphviz software, which we can install into our Snakemake conda environment using the following command
+
+```
+mamba install graphviz
+```
+
+Now we can use the **dot** command to plot our graph in jpeg format in the following way
+
+```
+dot -T jpg graph.dot > graph.jpg
+```
+
+Or if we're lazy we can do it without the intermediate dot file by using additional pipes
+
+```
+snakemake -n file8.txt --dag | tail -n +2 | dot -T jpg > graph.jpg
+
+```
+
+In both cases we get a visual representation of dependencies between rules as follows
+
+![plot graph](images/04_branches_and_variables/04_graph.jpg)
+
 
 
