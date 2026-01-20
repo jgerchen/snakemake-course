@@ -94,8 +94,22 @@ As explained before, you can download it directly using **wget** and the raw fil
 wget https://github.com/jgerchen/snakemake-course/raw/refs/heads/main/scripts/04_branches_and_variables/Snakefile 
 ```
 
+Now lets have a look at our Snakefile. We see that there are ten rules with various dependencies between each other. **However, their order seems to be all messed up!** Reconstructing which rule depends on which other rule would be quite an undertaking if we do it by hand.
 
+Or we can just ask Snakemake to do it for us. Let's assume we want to generate **file8.txt**, the output of **rule_8**. We can just ask Snakemake to list us what it **would do** if we ask it to create **file8.txt**. To do this we can tell Snakemake to do a **dryrun** by adding the **-n** option. So if we are in the same folder as our new Snakefile we can do this by running
 
+```
+snakemake -j1 -n file8.txt
+```
+With this command Snakemake will list all the rules it will run if we remove the **-n** parameter and ask it to run our job in ernest. 
+
+> [!important]
+> Doing dry runs can be really useful to ensure if Snakemake will really do what you think it should do. When I develop more complex workflows with computationally intensive jobs I always do dry runs to check if everything will be run as I expect it.
+
+Also note that Snakemake automatically ordered the rules **despite their order being completely mixed up!**
+
+> [!important]
+> Snakemake doesn't care about the order of your rules in your Snakefile. The only thing that matters are the dependencies between rules, which will define the order in which files are run.
 
 
 

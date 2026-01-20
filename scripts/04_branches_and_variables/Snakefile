@@ -1,0 +1,55 @@
+rule rule_9:
+	input:
+		f1="file2.txt",
+		f2="file5.txt"
+	output: "file9.txt"
+	shell: "cat {input} > {output}"
+
+rule rule_7:
+	input:
+		f1="file6.txt",
+		f2="file4.txt"
+	output: "file7.txt"
+	shell: "cat {input.f2} {input.f1} > {output}"
+
+rule rule_2:
+	input: 
+		f1="file1.txt",
+		f2="file2.txt"
+	output: "file3.txt"
+	shell: "cat {input} > {output}"
+
+rule rule_4:
+	input:  "file1.txt",
+	output: "file4.txt"
+	shell: "echo 'File4' > {output}"
+
+rule rule_1:
+	output: "file1.txt"
+	shell: "echo 'File1' > {output}"
+
+rule rule_10:
+	input: "file9.txt"
+	output: "file10.txt"
+	shell: "cp {input} {output}"
+
+rule rule_6:
+	input:	
+		f1="file1.txt",
+		f2="file4.txt",
+		f3="file5.txt"
+	output: "file6.txt"
+	shell: "cat {input.f2} {input.f2} {input.f3} {input.f1} > {output}"
+
+rule rule_8:
+	input: "file7.txt",
+	output: "file8.txt"
+	shell: "cp {input} {output}"
+
+
+rule rule_5:
+	input: 
+		"file1.txt",
+		"file4.txt"
+	output: "file5.txt"
+	shell: "cat {input} > {output}"
