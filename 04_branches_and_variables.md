@@ -67,3 +67,12 @@ cat file1.txt file2.txt > file3.txt"
 This makes sense for a command like cat, where we can just list any number of files that will then get concatenated. However, in most situations where we have multiple input or output files we want to use one file in a specific part of our shell command and another one in a different part. For this purpose we can give these files names and specifically address them using input or output variables.
 
 
+## Building complex workflows
+
+Now that we can define rules with multiple input and output files we already have tools at hand that allow us to build some pretty complex workflows. In the following part we will explore how these more complex workflows are resolved and run by Snakemake and how we can visualize them to keep the overview over our workflows.
+
+
+
+
+
+
