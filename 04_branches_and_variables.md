@@ -52,9 +52,13 @@ rule rule3:
     shell: "cat {input} > {output}"
 ```
 
-Note that in the output part we are now writing **file1.txt** and **file2.txt** in new lines instead of next to the output part. Also note that both of these lines have an additional level of indentation, e.g. there is an additional tab or set of multiple spaces at the beginning of the line, which tells Snakemake that both lines belong to the input part, while the output part in the following line goes back one level of indentation. Finally note the comma after file1.txt. If we make these types of multi-line variables we have to separate them with commas. **Forgetting these commas is one of the most common mistakes I make when writing Snakemake workflows!**
+Note that in the output part we are now writing **file1.txt** and **file2.txt** in new lines instead of next to the output part. Also note that both of these lines have an additional level of indentation, e.g. there is an additional tab or set of multiple spaces at the beginning of the line, which tells Snakemake that both lines belong to the input part, while the output part in the following line goes back one level of indentation. Finally note the comma after **file1.txt**. 
+> [!CAUTION]
+> If we define these types of multi-line variables we have to separate them with commas. **Forgetting these commas is one of the most common mistakes I make when writing Snakemake workflows!**
 
 
+
+## Named input and output variables
 
 
 
