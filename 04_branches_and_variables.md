@@ -20,13 +20,13 @@ Now the variable {output} in the shell script gets replaced by **file1.txt**, as
 
 
 > [!CAUTION]
-> Some shell commands you may want to include in your snakemake workflow use curly brackets on their own. For example consider calling the scripting language awk, where the default command for showing only the first column of a tab separated file is like the following:
+> Some shell commands you may want to include in your snakemake workflow use curly brackets on their own. For example consider the scripting language awk, where the command for plotting the first column of a tab separated file is like the following:
 >
 >awk '{print $1}' file.tsv
 >
->If we want to use such a command in the shell part from Snakemake we have to **escape the curly brackets** by adding an **{{extra pair of curly brackets}}**around them, so that your snakemake shell command would look as follows:
+>If we want to use such a command in the shell part from Snakemake we have to **escape the curly brackets** by adding an extra pair of curly brackets around them, so that your snakemake shell command would look as follows:
 >
->awk '{{print $1}}' file.tsv
+>awk '**{{**print $1**}}**' file.tsv
 
 
 
