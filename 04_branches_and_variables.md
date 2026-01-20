@@ -190,3 +190,11 @@ We get something that borders both science and art like this
 ![plot graph](images/04_branches_and_variables/04_graph3.jpg)
 
 ## How does Snakemake resolve workflows?
+
+In the previous part we saw that Snakemake can resolve complex dependencies between rules. Now let's try to understand a bit better how it does this.
+
++ In a first step Snakemake builds a **directed acyclical graph (DAG)** based on file dependencies defined by the input and output of rules. It does this by starting at the end of the graph (the file you tell Snakemake to generate) and then follows the dependencies backwards until all dependencies are resolved.
+
+## Your turn: Slimulating gene flow and making a PCA and running Structure
+
+Now for your part lets build something slightly less complicated, but much more useful in our slimulation framework.
