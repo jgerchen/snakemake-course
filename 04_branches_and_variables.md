@@ -173,7 +173,7 @@ And we get the following plot
 
 ![plot graph](images/04_branches_and_variables/04_graph2.jpg)
 
-Now lets assume we want to generate both **file_8.txt** and **file_10.txt** at the same time. We can do this by simply giving multiple both files to the Snakemake command. Also, both **file_8.txt** and **file_10.txt** depend on the output of some of the same rules (**rule_1**,**rule_4** and **rule_5**) Snakemake will understand this and will run those rules only once and decide on the most reasonable order to do that. For doing a dry run for both **file_8.txt** and **file_10.txt** run
+Now lets assume we want to generate both **file_8.txt** and **file_10.txt** at the same time. We can do this by simply giving multiple both files to the Snakemake command. Also, both **file_8.txt** and **file_10.txt** depend on the output of some of the same rules (**rule_1**,**rule_2**,**rule_3**,**rule_4** and **rule_5**) Snakemake will understand this and will run those rules only once and decide on the most reasonable order to do that. For doing a dry run for both **file_8.txt** and **file_10.txt** run
 
 ```
 snakemake -n file8.txt file10.txt
@@ -185,6 +185,8 @@ And it will tell us that it would run all 10 rules. If we plot the graph like th
 snakemake -n file8.txt file10.txt --dag | tail -n +2 | dot -T jpg > graph3.jpg
 ```
 
-We get something between a science and art like this
+We get something that borders both science and art like this
 
 ![plot graph](images/04_branches_and_variables/04_graph3.jpg)
+
+## How does Snakemake resolve workflows?
