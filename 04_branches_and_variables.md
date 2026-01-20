@@ -61,7 +61,7 @@ Note that in the output part we are now writing **file1.txt** and **file2.txt** 
 In the previous shell part we used the {input} variable to point to the input part, which consisted of two files, **file1.txt** and **file2.txt**. In such a case the {input} variable will be replaced by both files separated by spaces, so that in the end the actual command that is run after the variables are replaced will be as follows:
 
 ```
-cat file1.txt file2.txt > file3.txt"
+cat file1.txt file2.txt > file3.txt
 ```
 
 This makes sense for a command like cat, where we can just list any number of files that will then get concatenated. However, in most situations where we have multiple input or output files we want to use one file in a specific part of our shell command and another one in a different part. For this purpose we can give these files names and specifically address them using input or output variables. We can change **rule_3** in the following way to name our input variables
@@ -78,7 +78,7 @@ rule rule3:
 We can name variables by putting an arbitrary name (again no whitespace or special characters) and an equal sign before defining each file and we can then access that file by adding a dot and that name to each shell variable inside the curly brackets. Note that by accessing the files specifically, we changed the order in which cat will concatenate both files, so that the content of **file2** will now be on top of the content of **file1** in the output file and the shell command that will be run is as follows
 
 ```
-cat file2.txt file1.txt > file3.txt"
+cat file2.txt file1.txt > file3.txt
 ```
 
 ## Building complex workflows
