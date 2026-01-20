@@ -56,9 +56,14 @@ Note that in the output part we are now writing **file1.txt** and **file2.txt** 
 > [!CAUTION]
 > If we define these types of multi-line variables we have to separate them with commas. **Forgetting these commas is one of the most common mistakes I make when writing Snakemake workflows!**
 
-
-
 ## Named input and output variables
 
+In the previous shell part we used the {input} variable to point to the input part, which consisted of two files, **file1.txt** and **file2.txt**. In such a case the {input} variable will be replaced by both files separated by spaces, so that in the end the actual command that is run after the variables are replaced will be as follows:
+
+```
+cat file1.txt file2.txt > file3.txt"
+```
+
+This makes sense for a command like cat, where we can just list any number of files that will then get concatenated, this makes perfect sense. However, in most situations where we have multiple input or output files we want to use one file in a specific part of our shell command and another one in a different part. For this purpose we can give these files names and specifically address them using input or output variables.
 
 
