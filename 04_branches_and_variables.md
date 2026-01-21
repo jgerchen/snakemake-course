@@ -200,7 +200,7 @@ In the previous part we saw that Snakemake can resolve complex dependencies betw
 
 ![graph](images/04_branches_and_variables/04_graph_cyclical.jpg)
 
-The red arrow indicates that **rule_7** depends on the output of **rule_6**, but **rule_6** also depends on the output of **rule_7**. If you think about it you'll realize that this situation would be something like a chicken and egg problem that can't be solved in the context of Snakemake. We can introduce such a circular dependency by adding **file7.txt** (the output of **rule_7**) to the input part of **rule_6**, so that it looks like this:
+The red arrow indicates that **rule_7** depends on the output of **rule_6**, but **rule_6** also depends on the output of **rule_7**. If you think about it you'll realize that this situation would be something like a chicken and egg problem that can't be solved by Snakemake. We can introduce such a circular dependency by adding **file7.txt** (the output of **rule_7**) to the input part of **rule_6**, so that it looks like this:
 
 >	input:	
 >		f1="file1.txt",
