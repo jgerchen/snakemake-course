@@ -217,13 +217,7 @@ Now if we try to do a dry run again to generate **file8.txt**, Snakemake will ex
 + Finally Snakemake will run the rules in the order it decided. If you run it on a cluster where you can submit jobs, it will decide at runtime which jobs can be submitted in parallel.
 
 > [!important]
-> In summary, Snakemake starts with the output file(s) and then works its way backwards through dependencies until it has a complete graph, whose rules will the be executed from the other direction. Understanding this is essential for building complex Snakemake workflows and a lot of the times when Snakemake behaves different then we expect is because this approach may have counter intuitive consequences, because we are used to writing scripts where the indivdual parts are run linearly, from top to bottom.
-
-
-
-
-
-
+> In summary, Snakemake starts with the output file(s) and then works its way backwards through dependencies until it has a complete graph, whose rules are then executed from the other direction. Understanding this is essential for building complex Snakemake workflows and a lot of the times when Snakemake behaves different then we expect is because this approach may have counter intuitive consequences, because we are used to writing scripts where the indivdual parts are run linearly, from top to bottom.
 
 ## Your turn: Slimulating gene flow and making a PCA and running Structure
 
