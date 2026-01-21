@@ -202,11 +202,13 @@ In the previous part we saw that Snakemake can resolve complex dependencies betw
 
 The red arrow indicates that **rule_7** depends on the output of **rule_6**, but **rule_6** also depends on the output of **rule_7**. If you think about it you'll realize that this situation would be something like a chicken and egg problem that can't be solved by Snakemake. We can introduce such a circular dependency by adding **file7.txt** (the output of **rule_7**) to the input part of **rule_6**, so that it looks like this:
 
->	input:	
->		f1="file1.txt",
->		f2="file4.txt",
->		f3="file5.txt",
->       f4="file7.txt"
+```
+	input:	
+		f1="file1.txt",
+		f2="file4.txt",
+		f3="file5.txt",
+        f4="file7.txt"
+```
 
 Now if we try to do a dry run again to generate **file8.txt**, Snakemake will exit with the following error message:
 
