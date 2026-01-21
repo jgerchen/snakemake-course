@@ -193,7 +193,9 @@ We get something that borders both science and art like this
 
 In the previous part we saw that Snakemake can resolve complex dependencies between rules. Now let's try to understand a bit better how it does this.
 
-+ In a first step Snakemake builds a **directed acyclical graph (DAG)** based on file dependencies defined by the input and output of rules. It does this by starting at the end of the graph (the file/s you tell Snakemake to generate) and then follows the dependencies backwards until all dependencies are resolved. As the name suggests this type of graph has too properties. It is:
+### First step: 
+
+Snakemake builds a **directed acyclical graph (DAG)** based on file dependencies defined by the input and output of rules. It does this by starting at the end of the graph (the file/s you tell Snakemake to generate) and then follows the dependencies backwards until all dependencies are resolved. As the name suggests this type of graph has too properties. It is:
     + **Directed**: the connections between rules have a direction. If you look at the arrows in the plots we created before you will see that it goes **towards the output files we asked Snakemake to create.**
 
     + **Acyclical**: There can not be cyclical dependencies between rules. To better understand this look at the modified version of the graph for **file8.txt** below:
@@ -214,9 +216,13 @@ Now if we try to do a dry run again to generate **file8.txt**, Snakemake will ex
 
 > Cyclic dependency on rule rule_7.
 
-+ In a second step, Snakemake decides the order in which to run files to get from the top of the DAG to our desired output file.
+### Second step:
 
-+ Finally Snakemake will run the rules in the order it decided. If you run it on a cluster where you can submit jobs, it will decide at runtime which jobs can be submitted in parallel.
+Snakemake decides the order in which to run files to get from the top of the DAG to our desired output file.
+
+### Third step:
+
+Snakemake will run the rules in the order it decided. If you run it on a cluster where you can submit jobs, it will decide at runtime which jobs can be submitted in parallel.
 
 > [!important]
 > In summary, Snakemake starts with the output file(s) and then works its way backwards through dependencies until it has a complete graph, whose rules are then executed from the other direction. Understanding this is essential for building complex Snakemake workflows and a lot of the times when Snakemake behaves different then we expect is because this approach may have counter intuitive consequences, because we are used to writing scripts where the indivdual parts are run linearly, from top to bottom.
