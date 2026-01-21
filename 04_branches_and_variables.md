@@ -197,9 +197,24 @@ In the previous part we saw that Snakemake can resolve complex dependencies betw
     + **Directed**: the connections between rules have a direction. If you look at the arrows in the plots we created before you will see that it goes **towards the output files we asked Snakemake to create.**
 
     + **Acyclical**: There can not be cyclical dependencies between rules. To better understand this look at the modified version of the graph for **file8.txt** below:
-ot 
 
 ![graph](images/04_branches_and_variables/04_graph_cyclical.jpg)
+
+The red arrow indicates that **rule_7** depends on the output of **rule_6**, but **rule_6** also depends on the output of **rule_7**. If you think about it you'll realize that this situation would be an unsolvable porblem for Snakemake. We can introduce such a circular dependency by adding **file7.txt** (the output of **rule_7**) to the input part of **rule_6**, so that it looks like this:
+
+>	input:	
+>		f1="file1.txt",
+>		f2="file4.txt",
+>		f3="file5.txt",
+>       f4="file7.txt"
+
+Now if we try to do a dry run again to generate **file8.txt**, Snakemake will exit with the following error message:
+
+> Cyclic dependency on rule rule_7.
+
+Importantly, cyclical dependencies don't have to be directly by too rules that depend on each other, but they can also be indirect. Consider the following scenario:
+
+
 
 
 
