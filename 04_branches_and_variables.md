@@ -232,7 +232,7 @@ Snakemake will run the rules in the order it decided. If you run it on a cluster
 
 Now for your part lets build something slightly less complicated, but much more useful in our slimulation framework.
 
-We now want to do amore complex slimulation which starts with two completely separate populations with 500 indviduals each, one of which splits into two additional populations after 5000 generations, followed by unidirectional gene flow from one of the split populations into the other for another 5000 generations. We want to take the output of this slimulation and plot it using two different approaches: a principal component analysis on genotypes and using the bayesian clustering algorithm Structure.
+We now want to do amore complex slimulation which starts with two completely separate populations with 500 indviduals each. After 5000 generations a third population with the size of 200 splits off from the second population. There is unidirectional gene flow from the second to the third population with one migrant per generation. After 10000 generations we randomly sample 20 individuals from each population and save the results as a VCF file again. We then want to take the output of this slimulation and plot it using two different approaches: a principal component analysis on genotypes and using the bayesian clustering algorithm Structure.
 
 To make this happen, you have to combine the following parts into a workflow:
 
