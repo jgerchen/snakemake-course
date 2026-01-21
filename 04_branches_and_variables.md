@@ -143,7 +143,7 @@ In both cases we get a visual representation of dependencies between rules as fo
 
 ![plot graph](images/04_branches_and_variables/04_graph.jpg)
 
-When we look at this plot we can see that it contains only 8 out of the total 10 rules in the Snakefile. For example we don't see **rule_9** and **rule_10** in the plot. This is because **rule_8** does not depend on them and we only asked Snakemake to create its output **file8.txt**.
+When we look at this plot we can see that it contains only 8 out of the total 10 rules in the Snakefile: we don't see **rule_9** and **rule_10** in the plot. This is because **rule_8** does not depend on them and we only asked Snakemake to create its output **file8.txt**.
 
 Now let's try to generate **file_10**, which is the output of **rule_10**, which we also haven't seen in the previous plot. However, if we ask Snakemake to do a dry run to see if it can generate it using the following command:
 
@@ -173,7 +173,7 @@ And we get the following plot
 
 ![plot graph](images/04_branches_and_variables/04_graph2.jpg)
 
-Now lets assume we want to generate both **file_8.txt** and **file_10.txt** at the same time. We can do this by simply giving multiple both files to the Snakemake command. Also, both **file_8.txt** and **file_10.txt** depend on the output of some of the same rules (**rule_1**,**rule_2**,**rule_3**,**rule_4** and **rule_5**) Snakemake will understand this and will run those rules only once and decide on the most reasonable order to do that. For doing a dry run for both **file_8.txt** and **file_10.txt** run
+Now lets assume we want to generate both **file_8.txt** and **file_10.txt** at the same time. We can do this by simply giving multiple both files to the Snakemake command. Also, both **file_8.txt** and **file_10.txt** depend on the output of some of the same rules (**rule_1**,**rule_3**,**rule_4** and **rule_5**) Snakemake will understand this and will run those rules only once and decide on the most reasonable order to do that. For doing a dry run for both **file_8.txt** and **file_10.txt** run
 
 ```
 snakemake -n file8.txt file10.txt
@@ -193,7 +193,15 @@ We get something that borders both science and art like this
 
 In the previous part we saw that Snakemake can resolve complex dependencies between rules. Now let's try to understand a bit better how it does this.
 
-+ In a first step Snakemake builds a **directed acyclical graph (DAG)** based on file dependencies defined by the input and output of rules. It does this by starting at the end of the graph (the file you tell Snakemake to generate) and then follows the dependencies backwards until all dependencies are resolved.
++ In a first step Snakemake builds a **directed acyclical graph (DAG)** based on file dependencies defined by the input and output of rules. It does this by starting at the end of the graph (the file you tell Snakemake to generate) and then follows the dependencies backwards until all dependencies are resolved. As the name suggests this type of graph has too properties. It is:
+    + **Directed**: the connections between rules have a direction. If you look at the arrows in the plots we created before you will see that it goes **towards the output files we asked Snakemake to create.**
+
+    + **Acyclical**: There can not be cyclical dependencies between rules. To better understand this look at the modified version of the graph for **file8.txt** below:
+ot 
+
+![graph](images/04_branches_and_variables/04_graph_cyclical.jpg)
+
+
 
 ## Your turn: Slimulating gene flow and making a PCA and running Structure
 
