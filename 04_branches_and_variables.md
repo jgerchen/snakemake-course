@@ -196,9 +196,10 @@ In the previous part we saw that Snakemake can resolve complex dependencies betw
 ### First step: 
 
 Snakemake builds a **directed acyclical graph (DAG)** based on file dependencies defined by the input and output of rules. It does this by starting at the end of the graph (the file/s you tell Snakemake to generate) and then follows the dependencies backwards until all dependencies are resolved. As the name suggests this type of graph has too properties. It is:
-    + **Directed**: the connections between rules have a direction. If you look at the arrows in the plots we created before you will see that it goes **towards the output files we asked Snakemake to create.**
 
-    + **Acyclical**: There can not be cyclical dependencies between rules. To better understand this look at the modified version of the graph for **file8.txt** below:
++ **Directed**: the connections between rules have a direction. If you look at the arrows in the plots we created before you will see that it goes **towards the output files we asked Snakemake to create.**
+
++ **Acyclical**: There can not be cyclical dependencies between rules. To better understand this look at the modified version of the graph for **file8.txt** below:
 
 ![graph](images/04_branches_and_variables/04_graph_cyclical.jpg)
 
