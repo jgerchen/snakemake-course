@@ -193,14 +193,14 @@ We get something that borders both science and art like this
 
 In the previous part we saw that Snakemake can resolve complex dependencies between rules. Now let's try to understand a bit better how it does this.
 
-+ In a first step Snakemake builds a **directed acyclical graph (DAG)** based on file dependencies defined by the input and output of rules. It does this by starting at the end of the graph (the file you tell Snakemake to generate) and then follows the dependencies backwards until all dependencies are resolved. As the name suggests this type of graph has too properties. It is:
++ In a first step Snakemake builds a **directed acyclical graph (DAG)** based on file dependencies defined by the input and output of rules. It does this by starting at the end of the graph (the file/s you tell Snakemake to generate) and then follows the dependencies backwards until all dependencies are resolved. As the name suggests this type of graph has too properties. It is:
     + **Directed**: the connections between rules have a direction. If you look at the arrows in the plots we created before you will see that it goes **towards the output files we asked Snakemake to create.**
 
     + **Acyclical**: There can not be cyclical dependencies between rules. To better understand this look at the modified version of the graph for **file8.txt** below:
 
 ![graph](images/04_branches_and_variables/04_graph_cyclical.jpg)
 
-The red arrow indicates that **rule_7** depends on the output of **rule_6**, but **rule_6** also depends on the output of **rule_7**. If you think about it you'll realize that this situation would be an unsolvable porblem for Snakemake. We can introduce such a circular dependency by adding **file7.txt** (the output of **rule_7**) to the input part of **rule_6**, so that it looks like this:
+The red arrow indicates that **rule_7** depends on the output of **rule_6**, but **rule_6** also depends on the output of **rule_7**. If you think about it you'll realize that this situation would be something like a chicken and egg problem that can't be solved in the context of Snakemake. We can introduce such a circular dependency by adding **file7.txt** (the output of **rule_7**) to the input part of **rule_6**, so that it looks like this:
 
 >	input:	
 >		f1="file1.txt",
@@ -212,7 +212,15 @@ Now if we try to do a dry run again to generate **file8.txt**, Snakemake will ex
 
 > Cyclic dependency on rule rule_7.
 
-Importantly, cyclical dependencies don't have to be directly by too rules that depend on each other, but they can also be indirect. Consider the following scenario:
++ In a second step, Snakemake decides the order in which to run files to get from the top of the DAG to our desired output file.
+
++ Finally Snakemake will run the rules in the order it decided. If you run it on a cluster where you can submit jobs, it will decide at runtime which jobs can be submitted in parallel.
+
+
+> [!important]
+> In summary, Snakemake starts with the output file and then works its way backwards through dependencies until it has a complete graph, whose rules will the be executed from the other direction. Understanding this is essential for building complex Snakemake workflows and a lot of the times when Snakemake behaves different then we expect is because this approach may have counter intuitive consequences, because we are used to writing scripts where the indivdual partsrun linearly, from top to bottom.
+
+
 
 
 
