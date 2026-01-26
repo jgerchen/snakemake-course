@@ -48,5 +48,23 @@ Note that here **{wc}** is not actually wildcard, but a variable that is only va
 >
 > range(1,4)
 
+## Expanding multiple wildcards
 
+Now let's throw a second wildcard **{wc2}** into the mix and also expand it using the expand function. Consider the following scenario
 
+```
+rule rule_1:
+	output: "rule1_file{wc1}_{wc2}.txt"
+	shell: "echo {wildcards.wc1} > {output}"
+
+rule rule_2:
+ 	input: expand("rule1_file{wc_one}_{wc_two}.txt", wc_one=range(1,4), wc_two=["one","two"])
+	output: "rule2_cat.txt"
+    shell: "cat {input} > {output}"
+```
+
+As you can see we can expand multiple variables using the expand function. We expanded **wc_one** using python's range function and **wc_two** using an array of two strings. In this situation the expand function will generate all combinations of both variables, resulting in 6 output files instead of three.
+
+## Escaping wildcard expansion
+
+As mentioned above, 
