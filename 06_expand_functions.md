@@ -24,4 +24,23 @@ If we tell Snakemake to generate **rule2_cat.txt** Snakemake will run rule_1 thr
 
 ## Using the expand function instead
 
-In the example above we explicitely defined each of the three input files, where the only difference is the value for wildcard **{wc1}**.
+In the example above we explicitely defined each of the three input files, where the only difference is the value for wildcard **{wc1}**. Snakemake has a specific function that can generate such a list of input or output files, that only differ by the value of one or multiple wildcards. This is called the expand function and for **rule_2** from the previous example it would look as follows:
+
+rule rule_2:
+ 	input: expand("rule1_file{wc}.txt", wc=[1,2,3])
+	output: "rule2_cat.txt"
+    shell: "cat {input} > {output}"
+```
+
+Note that here **{wc}** is not actually wildcard, but a variable that is only valid inside the expand function. We can use any name for these kind of expanded variables and we define what it should be replaced with after the string and a comma and equal sign. In this case we supply it with a python array containing the numbers 1,2 and 3.
+
+>### :snake: Python objects usable in the expand function
+> We can use different types of python objects for variable expansion in the expand function and for now I will show you only two examples: a python array and the range function. Above we used a python array containing the three integers 1,2 and 3. Arrays are functionally similar to vectors in R and are defined by square brackets and its elements are separated by commas. Arrays can contain different types of elements. While numeric elements can just by written as above, strings have to be surrounded by parentheses, like in the following example:
+> ["one","two","three"]
+> As an alternative to writing a sequence of numbers by hand you can also use the range function to do it for you. If you supply it a single integer as below it will generate a sequence of numbers
+> range(3)
+> However, note that **numbers in Python are zero-based**, e.g. it will start counting at zero and range(3) will result in the numbers 0,1 and 2. If we want it to start at 1 we have to give it two parameters, our start and end point, which has to be one greater than the number we actually want. So to generate 1,2 and 3 we have to use
+> range(1,4)
+
+
+
