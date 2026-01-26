@@ -51,3 +51,11 @@ I also don't know how long individual parts will take beforehand, so I will stru
 [03. My first rule!](03_my_first_rule.md)
 
 [04. Branches and variables](04_branches_and_variables.md)
+
+[05. Wildcards](05_wildcards.md)
+
+[06. Expanding wildcards](06_expand_functions.md)
+
+[07. Going Meta](07_going_meta.md)
+
+[08. Cluster settings](08_cluster_settings.md)

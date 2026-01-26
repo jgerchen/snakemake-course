@@ -1,9 +1,12 @@
 initialize() {
-	initializeMutationRate(1e-7);
+	initializeMutationRate(1e-8);
 	initializeMutationType("m1", 0.5, "f", 0.0);
 	initializeGenomicElementType("g1", m1, 1.0);
-	initializeGenomicElement(g1, 0, 99999);
+	initializeGenomicElement(g1, 0, 999999);
 	initializeRecombinationRate(1e-8);
+	if (!exists("P2_TO_P3")) defineConstant("P2_TO_P3",0.001);
+	if (!exists("P3_TO_P2")) defineConstant("P3_TO_P2",0);
+	if (!exists("OUTFILE")) defineConstant("OUTFILE","04_slim_output.vcf");
 }
 1 early() { 
 	sim.addSubpop("p1", 500);
@@ -11,12 +14,21 @@ initialize() {
  }
 10000 early() { 
 sim.addSubpopSplit("p3", 200, p1);
-p3.setMigrationRates(p2, 1);
  }
+
+18000 early() { 
+p3.setMigrationRates(p2, P2_TO_P3);
+p2.setMigrationRates(p3, P3_TO_P2);
+}
+
+//19500 early() { 
+//p3.setMigrationRates(p2, 0);
+//}
+
 20000 late() { 
 g_p1=p1.sampleIndividuals(20);
 g_p2=p2.sampleIndividuals(20);
 g_p3=p3.sampleIndividuals(20);
 g=c(g_p1,g_p2,g_p3);
-g.outputIndividualsToVCF("04_slim_output.vcf");
+g.outputIndividualsToVCF(OUTFILE);
 }

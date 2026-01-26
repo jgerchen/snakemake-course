@@ -9,7 +9,7 @@ parser.add_argument("-s", "--structure_mainparams", help="output mainparams file
 parser.add_argument("-e", "--extraparams", help="output extraparams file for running structure")
 
 args=parser.parse_args()
-input_gzip=args.vcf
+input_vcf=args.vcf
 output_structure=args.output
 pop_map_file=args.populations
 max_ploidy=int(args.max_ploidy)
@@ -41,27 +41,31 @@ genotype_list=[]
 #genotypes_l3=[]
 #genotypes_l4=[]
 
-
-with gzip.open(input_gzip, 'rt') as gzVCF:
-	for line in gzVCF:
-		if line[0]=="#":
-			if line[1]!="#":
-				ind_cats=line.strip().split("\t")[9:]
-				#every ind gets list of lists[["1","1","-9","-9"] ,...]
-				ind_genotypes=[[] for i in ind_cats]
-				#TODO: make dict instead!! -> ind name to column i
-				ind_names={ind_cats[i]:i for i in range(len(ind_cats))}
-				
-		else:
-			pos_cats=line.strip().split("\t")
-			pos_gens=pos_cats[9:]
-			genotype_list.append(pos_cats[0]+"_"+pos_cats[1])
-			for gen_i in range(len(pos_gens)):
-				gen_list=sorted(pos_gens[gen_i].split(":")[0].replace("|", "/").replace(".","-9").split("/"))
-				if len(gen_list)<max_ploidy:
-					gen_list+=["-9"]*(max_ploidy-len(gen_list))
-				ind_genotypes[gen_i].append(gen_list)
+if input_vcf[-3:]==".gz":
+	VCF=gzip.open(input_vcf, 'rt')
+else:
+	VCF=open(input_vcf)
+for line in VCF:
+	if line[0]=="#":
+		if line[1]!="#":
+			ind_cats=line.strip().split("\t")[9:]
+			#every ind gets list of lists[["1","1","-9","-9"] ,...]
+			ind_genotypes=[[] for i in ind_cats]
+			#TODO: make dict instead!! -> ind name to column i
+			ind_names={ind_cats[i]:i for i in range(len(ind_cats))}
+			
+	else:
+		pos_cats=line.strip().split("\t")
+		pos_gens=pos_cats[9:]
+		genotype_list.append(pos_cats[0]+"_"+pos_cats[1])
+		for gen_i in range(len(pos_gens)):
+			gen_list=sorted(pos_gens[gen_i].split(":")[0].replace("|", "/").replace(".","-9").split("/"))
+			if len(gen_list)<max_ploidy:
+				gen_list+=["-9"]*(max_ploidy-len(gen_list))
+			ind_genotypes[gen_i].append(gen_list)
 print(ind_names)
+VCF.close()
+
 with open(output_structure, "w") as struct_out:
 	struct_out.write("\t\t"+"\t".join(genotype_list)+"\n")
 	for ind_i in range(len(ind_list)):
@@ -89,8 +93,8 @@ with open(mainparams, "w") as mainparams_out:
 	mainparams_out.write("#define MARKOVPHASE 0\n")
 	mainparams_out.write("#define NOTAMBIGUOUS -999\n")
 	mainparams_out.write("#define MAXPOPS 2\n")
-	mainparams_out.write("#define BURNIN 10000\n")
-	mainparams_out.write("#define NUMREPS 100000\n")
+	mainparams_out.write("#define BURNIN 1000\n")
+	mainparams_out.write("#define NUMREPS 10000\n")
 with open(extraparams, "w") as extraparams_out:
 	extraparams_out.write("#define NOADMIX 0\n")
 	extraparams_out.write("#define LINKAGE 0\n")

@@ -155,7 +155,7 @@ So in your yaml file you have to provide a list of channels and a list of depend
   - r-base=4.52
 ```
 
-If you want Snakemake to use the Conda environment you defined you have to run it with the addtional parameter **--use-conda**. Snakemake will then create a local conda environment the first time you run it or load the conda environment for a specific rule if it already was created in its local directory of temporary files. You can also tell Snakemake to use the mamba package solver for installing conda environments (which is faster than the default and can in sometimes install more recent software versions) by adding the option **--conda-frontend 'mamba'** to your Snakemake command.
+If you want Snakemake to use the Conda environment you defined you have to run it with the addtional parameter **--use-conda**. Snakemake will then create a local conda environment the first time you run it or load the conda environment for a specific rule if it already was created in its local directory of temporary files.
 
 > [!NOTE]
 > Snakemake stores lots of Metainformation about your Snakemake workflow in a hidden folder called **.snakemake** in the directory were you run your workflow. This folder is also where Snakemake puts the conda environments it creates, but you can change this to a different folder using by adding the **--conda-prefix** parameter command to your snakemake command.
