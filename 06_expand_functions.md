@@ -1,12 +1,12 @@
 # 6. Expanding wildcards
 
-In the previous part we already saw that a rule with a wild card may be run multiple times if we ask Snakemake to create multiple output files with different values for that wildcard. In addition to that, a rule can also be run multiple times if a second rule will have several input files, which can be resolved with different values for that wildcard. Consider the following Scenario:
+In the previous part we already saw that a rule with a wildcard may be run multiple times if we ask Snakemake to create multiple output files with different values for that wildcard. In addition to that, a rule can also be run multiple times if a second rule will have several input files, which can be resolved with different values for that wildcard. Consider the following Scenario:
 
 
 ```
 rule rule_1:
 	output: "rule1_file{wc1}.txt"
-	shell: "touch {output}"
+	shell: "echo {wildcards.wc1} > {output}"
 
 rule rule_2:
  	input: 
@@ -21,3 +21,7 @@ If we tell Snakemake to generate **rule2_cat.txt** Snakemake will run rule_1 thr
 
 > [!IMPORTANT]
 > Keep in mind that although it is **rule_1**, which is run three times, it is the input of **rule_2**, which determines this. Or more general, again it is the **dependencies from other rules which determine the values of wildcards**.
+
+## Using the expand function instead
+
+In the example above we explicitely defined each of the three input files, where the only difference is the value for wildcard **{wc1}**.
