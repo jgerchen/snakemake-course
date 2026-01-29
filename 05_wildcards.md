@@ -133,15 +133,15 @@ And if you want to change multiple variables at the same time you can supply the
 slim -d P2_TO_P3=0.002 -d P3_TO_P2=0.002 04_slimulation.slim
 ```
 
-You can also use the -d argument to change string variables like **OUTFILE**, but here things are a bit more complicated. Because of the way how SLiM uses parentheses to define strings internally the command we would have to type in the command line to change the name of the output file to **05_slim_output.vcf** would be
+You can also use the -d argument to change string variables like **OUTFILE**, but here things are a bit more complicated. Because of the way how SLiM uses quotes to define strings internally the command we would have to type in the command line to change the name of the output file to **05_slim_output.vcf** would be
 
 ```
 slim -d "OUTFILE='05_slim_output.vcf'" 04_slimulation.slim
 ```
-Note the regular parentheses around the variable definition and the single parenthesis around the value of the string variable. However, if we want to use this command in the shell part of one of our Snakemake rules we run into a problem: because we supply the shell command in the form of a python string, which is also delimited by parenthesis, Snakemake will think the string will end with the first parenthesis at the beginning of the variable definition and the remainder of the line will not make sense for it, resulting in some error message. 
+Note the regular quotes around the variable definition and the single quote around the value of the string variable. However, if we want to use this command in the shell part of one of our Snakemake rules we run into a problem: because we supply the shell command in the form of a python string, which is also delimited by quotes, Snakemake will think the string will end with the first quote at the beginning of the variable definition and the remainder of the line will not make sense for it, resulting in some error message. 
 
 > [!IMPORTANT]
-> The solution for this dilemma is if we want parentheses to be interpreted literally inside a string and not as a string delimiter we have to **escape them using a backslash (\\)** like this:
+> The solution for this dilemma is if we want quotes to be interpreted literally inside a string and not as a string delimiter we have to **escape them using a backslash (\\)** like this:
 
 ```
 shell: "slim -d \"OUTFILE='05_slim_output.vcf'\" 04_slimulation.slim"

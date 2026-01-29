@@ -36,7 +36,7 @@ rule rule_2:
 Note that here **{wc}** is not actually wildcard, but a variable that is only valid inside the expand function. We can use any name for these kind of expanded variables and we define what it should be replaced with after the string and a comma and equal sign. In this case we supply it with a python array containing the numbers 1,2 and 3.
 
 >### :snake: Python objects usable in the expand function
-> We can use different types of python objects for variable expansion in the expand function and for now I will show you only two examples: a python array and the range function. Above we used a python array containing the three integers 1,2 and 3. Arrays are functionally similar to vectors in R and are defined by square brackets and its elements are separated by commas. Arrays can contain different types of elements. While numeric elements can just by written as above, strings have to be surrounded by parentheses, like in the following example:
+> We can use different types of python objects for variable expansion in the expand function and for now I will show you only two examples: a python array and the range function. Above we used a python array containing the three integers 1,2 and 3. Arrays are functionally similar to vectors in R and are defined by square brackets and its elements are separated by commas. Arrays can contain different types of elements. While numeric elements can just by written as above, strings have to be surrounded by quotes, like in the following example:
 >
 > ["one","two","three"]
 >

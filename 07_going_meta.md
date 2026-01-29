@@ -132,7 +132,7 @@ rule structure:
 Again, note the indentation after the resources part. Memory (**mem_mb**) and scratch space (**disk_mb**) have to be given in megabytes, and **runtime** in human readable format, so "1h" would be one our, "30m" 20 minutes and "1d" one day.
 
 >[!CAUTION]
-> Note that **mem_mb** and **disk_mb** are given as numbers, while **runtime** is given as **text string**, with parentheses around it.
+> Note that **mem_mb** and **disk_mb** are given as numbers, while **runtime** is given as **text string**, with quotes around it.
 
 There is another separate resource-like part of your rule that you'll have to partially set yourself, which is **threads**, which is added as follows
 ```
@@ -174,7 +174,7 @@ shell:
     """
 ```
 
-Note that here the beginning and end block of the shell part are defined by three parentheses. Also note that these parentheses are now in the line following the shell command and have one level of indentation.
+Note that here the beginning and end block of the shell part are defined by three quotes. Also note that these quotes are now in the line following the shell command and have one level of indentation.
 
 Also note that we followed the guidelines of metacentrum and cleaned up after ourselves on the local scratch space using the **clean_scratch** command. However, if you have a job that produces large temporary files and that may crash, for example if it runs out of memory or wall time, this is not an ideal solution, because **clean_scratch** will only run if the job ran until the end. An alternative way to clean up the local scratch space even if your job crashes is to use a so-called **trap** as follows:
 
