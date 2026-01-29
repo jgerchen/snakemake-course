@@ -114,11 +114,48 @@ Also note that the name of the log file includes all three wildcards from the ou
 
 Our computing jobs on MetaCentrum have resource requirements, which have to be defined beforehand for each job, specifically **memory**, **scratch space** and **runtime** and our jobs will get killed if they end up using more than they were assigned. Since different parts of our workflow will have different resource requirements we can set them for each rule as follows:
 
+```
+rule structure:
+	input:
+		mainparams="out_{P23}_{P32}/mainparams",
+		extraparams="out_{P23}_{P32}/extraparams",
+		struct_inp="out_{P23}_{P32}/04_slim_{P23}_{P32}.struct"
+	output: struct_out="out_{P23}_{P32}/04_slim_{P23}_{P32}_{rep}.out_f"
+	conda:	"envs/structure.yaml"
+    log: "log/structure_{P23}_{P32}_{rep}"
+    resources:
+        mem_mb=2000,
+        disk_mb=1000,
+        runtime="1h"
+```
 
+Again, note the indentation after the resources part. Memory (**mem_mb**) and scratch space (**disk_mb**) have to be given in megabytes, and **runtime** in human readable format, so "1h" would be one our, "30m" 20 minutes and "1d" one day.
 
+>[!CAUTION]
+> Note that **mem_mb** and **disk_mb** are given as numbers, while **runtime** is given as **text string**, with parentheses around it.
 
+There is another separate resource-like part of your rule that you'll have to partially set yourself, which is **threads**, which is added as follows
+```
+rule structure:
+	input:
+		mainparams="out_{P23}_{P32}/mainparams",
+		extraparams="out_{P23}_{P32}/extraparams",
+		struct_inp="out_{P23}_{P32}/04_slim_{P23}_{P32}.struct"
+	output: struct_out="out_{P23}_{P32}/04_slim_{P23}_{P32}_{rep}.out_f"
+	conda:	"envs/structure.yaml"
+    log: "log/structure_{P23}_{P32}_{rep}"
+    resources:
+        mem_mb=2000,
+        disk_mb=1000,
+        runtime="1h"
+    threads: 4
+```
 
+This would cause your structure run to run on a node with four cores, however structure does not have multi threading support and neither do any of the other scripts and programs we used in the examples. For programs that do you typically have to provide the number of threads in the shell command, which you can do by accessing the **{threads}** variable using curly brackets. So for example for a multi-threaded program like [bwa mem](https://github.com/lh3/bwa?tab=readme-ov-file) the shell command could then look like this:
 
+```
+shell: "bwa mem -t {threads} ref.fa read1.fq read2.fq "
+```
 
 ### Working on Scratch
 
