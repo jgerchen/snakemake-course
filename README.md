@@ -58,7 +58,7 @@ I also don't know how long individual parts will take beforehand, so I will stru
 
 [07. Going Meta](07_going_meta.md)
 
-[08. Config files and reports](08_config_files.md)
+[08. Config files](08_config_files.md)
 
 [09. The dark side of the snake](09_dark_side_of_the_snake.md)
 

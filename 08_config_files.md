@@ -1,4 +1,4 @@
-# 8. Config files and reports
+# 8. Config files
 
 As your workflows get larger and more complex and if you want to apply them to multiple datasets it is often helpful to set parameters not by using wildcards or by editing your workflow, but by setting up easily understandable config files. Snakemake has support for setting up your own config files, which you can use to define any types of values and variables.
 
@@ -67,7 +67,7 @@ Now lets look at the shell part of our slim rule again, but this time let's assu
 
 
 
-## Reports
+
 
 ## Your turn: modify your workflow to use a config file and to put its plots into a report
 
