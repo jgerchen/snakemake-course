@@ -4,7 +4,7 @@ As your workflows get larger and more complex and if you want to apply them to m
 
 ## The yaml format
 
-Snakemake config files are written in the easily readable [yaml format](https://yaml.org/). You already know some basic elements of the yaml format from writing the envrionment definitions for conda, but it can do more than that. In general you define a variable in your yaml file by a colon, a space and the value as follows:
+Snakemake config files are written in the easily readable [yaml format](https://yaml.org/). You already know some basic elements of the yaml format from writing the environment definitions for conda, but it can do more than that. In general you define a variable in your yaml file by a colon, a space and the value as follows:
 
 ```
 variable_1: 1
