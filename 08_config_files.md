@@ -52,7 +52,16 @@ In the example above we added the option to set the conda environment used by th
 >### :snake: Python concatenating string variables
 > Conveniently, python allows you to directly concatenate multiple string variables using the **+** sign. However, all variables involved have to be of string type (with parentheses around them), numeric variables have to be turned into strings before concatenating them with strings using the **str()** function. So if we wanted to access **variable_2** from the example yaml file above and turn it into a string we'd have to use **str(config["variable_2"])** instead.
 
+## Accessing config files in the shell part of your rules
 
+Now lets look at the shell part of our slim rule again, but this time let's assume that the migration rates **P23** and **P32** are not defined by a wildcard, but by values defined in our config file called **migration_P23** and **migration_P32**.
+
+```
+	shell: "slim -d P2_TO_P3={config[migration_P23]} -d P3_TO_P2={config[migration_P32]} -d \"OUTFILE='{output}'\" 04_slimulation.slim"
+```
+
+>[!CAUTION]
+>Note that in the shell part our config file is also accessed with **curly brackets** and the names of the specific variables are accessed with **square** brackets. However, note that unlike in the other part of our rule here the variable names **must not have parentheses around them!**
 
 ## Setting default config files
 
