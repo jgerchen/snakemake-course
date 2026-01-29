@@ -35,10 +35,22 @@ Within your Snakefile outside the shell part of your rules the variables defined
 In the input and output part and other parts outside the shell part of your rules you can also access dictionaries by their values and if you supply snakemake with a config file it will generate a dictionary called **config** in which you can access the variables defined in your yaml file using square brackets, as described above. So for the example yaml file above **config["variable_1"]** will be replaced with **1** and **config["variable_4"]** will access the python array.
 
 >[!IMPORTANT]
-> Dictionaries are accessed differently than wildcards. While wildcards are accessed directly inside a string variable using curly brackets, we can't do the same with python objects like dictionaries. In the following part are some examples how we can access config files using dictionaries in snakemake:
+> Dictionaries are accessed differently than wildcards. While wildcards are accessed directly inside a string variable using curly brackets, we can't do the same with python objects like dictionaries. In the following part are some examples how we can access config files using dictionaries in snakemake and how we could implement them in different parts of :
 
+```
+rule structure:
+	conda:	{config["conda_structure"]}
+    log: {config["log_folder"]}+"/structure_{P23}_{P32}_{rep}"
+    resources:
+        mem_mb={config["mem_structure"]},
+        disk_mb={config["disk_mb_structure"]},
+        runtime={config["runtime_structure"]}
+```
 
+In the example above we added the option to set the conda environment used by the rule using the config file, we set the option to define the location of the folder containing the log files and we could set all three resources. For the log file note that we didn't replace the complete filename, because the log file name still needs to contain the wildcards. Rather, we concatenated the output of the **log_folder** variable from the config file with the text string containing the wildcards.
 
+>### :snake: Python concatenating string variables
+> Conveniently, python allows you to directly concatenate multiple string variables using the **+** sign. However, all variables involved have to be of string type (with parentheses around them), numeric variables have to be turned into strings before concatenating them with strings using the **str()** function. So if we wanted to access **variable_2** from the example yaml file above and turn it into a string we'd have to use **str(config["variable_2"])** instead.
 
 
 
