@@ -13,14 +13,21 @@ variable_3: "Var three"
 variable_4: ["This", "is", "a", "python", "array"]
 ```
 
-In the examples above **variable_1** defines an integer, **variable_2** defines a floating point variable (a number with values after the comma), **variable_3** defines a string variable and variable_4 defines a python array consisting of 5 string variables. 
+In the examples above **variable_1** defines an integer, **variable_2** defines a floating point variable (a number with values after the comma), **variable_3** defines a string variable and **variable_4** defines a python array consisting of 5 string variables. 
 
 ## Using config files in you workflow
 
 Within your Snakefile outside the shell part of your rules the variables defined in your config file are available as **python dictionaries**.
 
-
-
+>### :snake: Python dictionaries
+> Like arrays, dictionaries are python objects that contain a collection of data objects. Unlike arrays, the data objects in a dictionary have two parts: a **key** and a **value**. The values inside a dictionary are accessed by using using their keys. Python dictionaries are defined using curly brackets (yes, yet another use of curly brackets!) and key and value are separated by colons and individual key-value pairs are separated by commas as in the following examples
+>
+> dictionary_1{"key_1":"value_1", "key_2":"value_2", "key_3":"value_3"}
+> dictionary_2{"key_1":1, "key_2":2, "key_3":3}
+> dictionary_3{1:"value_1", 2:"value_2", 3:"value_3"}
+> dictionary_4{1:1, 2:2, 3:3}
+>
+> Based on the examples above you can see that both keys and values can be numbers or strings (written in parentheses) and also other python data types we will not get into here. We access the value of a dictionary using square brackets like in the following examples, so for example using **dictionary_1["key_2"]** will return **"value_2"** and using **dictionary_4[2]** will return **2**.
 
 
 ## Setting default config files
