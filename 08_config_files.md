@@ -22,13 +22,13 @@ Within your Snakefile outside the shell part of your rules the variables defined
 >### :snake: Python dictionaries
 > Like arrays, dictionaries are python objects that contain a collection of data objects. Unlike arrays, the data objects in a dictionary have two parts: a **key** and a **value**. The values inside a dictionary are accessed by using using their keys. Python dictionaries are defined using curly brackets (yes, yet another use of curly brackets!) and key and value are separated by colons and individual key-value pairs are separated by commas as in the following examples
 >
-> dictionary_1{"key_1":"value_1", "key_2":"value_2", "key_3":"value_3"}
+> dictionary_1={"key_1":"value_1", "key_2":"value_2", "key_3":"value_3"}
 >
-> dictionary_2{"key_1":1, "key_2":2, "key_3":3}
+> dictionary_2={"key_1":1, "key_2":2, "key_3":3}
 >
-> dictionary_3{1:"value_1", 2:"value_2", 3:"value_3"}
+> dictionary_3={1:"value_1", 2:"value_2", 3:"value_3"}
 >
-> dictionary_4{1:1, 2:2, 3:3}
+> dictionary_4={1:1, 2:2, 3:3}
 >
 > Based on the examples above you can see that both keys and values can be numbers or strings (written in parentheses) and also other python data types we will not get into here. We access the value of a dictionary using square brackets like in the following examples, so for example using **dictionary_1["key_2"]** will return **"value_2"** and using **dictionary_4[2]** will return **2**.
 
