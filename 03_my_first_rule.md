@@ -27,7 +27,7 @@ rule rule_1:
 Note the intendation before the output statement, which tells Snakemake that the output part belongs to rule_1 and is not another independent python object.
 
 >#### :snake: text strings
->Note that the filename "rule1.txt" is written in parantheses. This is one way to define a text string in python. The other is to use 'single quotes', which may have subtle differences in behaviour in some situations, which are not relevant at this point.
+>Note that the filename "rule1.txt" is written in **quotes**. This is one way to define a text string in python. The other is to use 'single quotes', which may have subtle differences in behaviour in some situations, which are not relevant at this point.
 
 Finally, we also have to define how **rule_1** is supposed to generate **file1.txt**. For the purpose of this exercise let's just use the UNIX **touch** command. If we run the command
 
