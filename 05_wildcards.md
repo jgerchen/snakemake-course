@@ -71,7 +71,21 @@ This is because it can generate **new_file.txt**, the dependency of **rule_4** b
 
 ## Multiple wildcards   
 
-Files can contain more than one wildcard or the same wildcard multiple times.
+Files can contain more than one wildcard or the same wildcard multiple times. Consider the following example:
+
+```
+rule rule_1:
+	output: "{wc1}_{wc2}_file.txt"
+	shell: "touch {output}"
+
+rule rule_2:
+ 	input: "{wc1}_new_file.txt"
+	output: "{wc1}_file_copy.txt"
+	shell: "cp {input} {output}"
+```
+
+In the output of **rule_1** **{wc2}** will be replaced with **new** based on the input of **rule_2**, while **{wc1}** will propagate through **rule_1** and will be determined based on our desired output file.
+
 
 ## Using wildcards directly in your shell commands
 
