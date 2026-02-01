@@ -84,6 +84,19 @@ Now only **{wc_one}** gets expanded by the expand function while **{wc2}** acts 
 
 I hope you can see that the expand function can be very useful for creating for example replicate runs of simulations or other software.
 
+## Exercise: build some complex graphs using wildcards
+
+To make sure that you understand how wildcards work, here I propose an exercise: I show you plots of three graphs and you are supposed to reconstruct them by writing Snakefiles using the features we learned in the previous lessons. You can keep the shell part of your rules as simple as you like, for example by just using **touch**, as I did in the previous examples, the important part in this exercise is to understand how rules are connected using wildcards.
+
+### Exercise workflow 1:
+
+Use no more than 6 rules!
+
+![plot graph](images/06_expand_functions/wc_01.jpg)
+
+### Exercise workflow 2:
+
+
 ## Your turn: modify your workflow to run multiple replicate structure runs and summarize and plot their results
 
 In many publications that use Structure you'll see that people often use multiple replicate structure runs and generate a consensus between results. The issue with generating consensus Structure runs is that Structure arbitrarily assigns cluster identities, so clusters be swapped between runs. 
