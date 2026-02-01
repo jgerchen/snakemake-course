@@ -100,6 +100,12 @@ Use no more than 4 rules and the all rule!
 
 ![plot graph](images/06_expand_functions/wc_02.jpg)
 
+### Exercise workflow 3:
+
+
+
+
+
 ## Your turn: modify your workflow to run multiple replicate structure runs and summarize and plot their results
 
 In many publications that use Structure you'll see that people often use multiple replicate structure runs and generate a consensus between results. The issue with generating consensus Structure runs is that Structure arbitrarily assigns cluster identities, so clusters be swapped between runs. 

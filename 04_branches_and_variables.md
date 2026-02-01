@@ -189,6 +189,17 @@ We get something that borders both science and art like this
 
 ![plot graph](images/04_branches_and_variables/04_graph3.jpg)
 
+## Setting default output files for the whole workflow
+
+Let's assume we always want our workflow to generate **file8.txt** and **file10.txt** as default output. As we already saw before if we don't give any extra parameters to snakemake it will always try to generate the output of the first rule of the workflow. We can use this behaviour by putting an additional rule at the top, which has **only input files** and no output files or additional shell commands. These input files will be the output of rules we want snakemake to generate by default, in this case **file8.txt** and **file10.txt**. By convention, this rule is usually called **all**, although we could give it any other name and in our case it would look as follows:
+
+```
+rule all:
+    input: 
+        "file8.txt",
+        "file10.txt"
+```
+
 ## How does Snakemake resolve workflows?
 
 In the previous part we saw that Snakemake can resolve complex dependencies between rules. Now let's try to understand a bit better how it does this.
