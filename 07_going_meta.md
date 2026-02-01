@@ -196,6 +196,21 @@ Here we created a new temporary folder called **my_job** on the scratch space of
 >[!CAUTION]
 > When you run jobs locally on $SCRATCH like that think about absolute and relative file paths. **{input}** and **{output}** will point to the input and output files you defined, but if you change your directory to $SCRATCH, you will have to consider paths relative to your local directory and if you for example use scripts that are in your workflow folder, you'll either have to set the full path or you'd have to copy them to the local folder as well.
 
+
+### Using MetaCentrum modules
+
+MetaCentrum has its own system of providing software modules you may want to use instead of conda. You can load them inside a snakemake rule like [you would in any MetaCentrum job script](https://docs.metacentrum.cz/en/docs/software/modules) for example like
+
+shell: 
+    """
+    module load bwa
+    bwa mem -t {threads} ref.fa read1.fq read2.fq "
+    """
+
+>[!CAUTION]
+> You can often run into issues when you try to use both conda and MetaCentrum modules at the same time, because they will often try to load the same libraries, which can then be mutually incompatible. **Try to avoid using both conda and MetaCentrum modules in the same rule**. 
+
+
 ### Running longer jobs
 
 Until the last job of your workflow finished running, Snakemake itself has to keep running to monitor and submit jobs. Snakemake has a low cpu and memory footprint, so it should be ok to run it on the login node of MetaCentrum, at least for testing. However, for more complex jobs you also want to submit your Snakemake job as its own job, because MetaCentrum will revoke user permissions on the login node after ~10 hours, which will make it impossible for Snakemake to submit new jobs, while submitted jobs have permission to submit new jobs during their whole runtime.
