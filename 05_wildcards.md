@@ -105,7 +105,7 @@ snakemake -j1 last_100_lines_of_longfile.txt
 ```
 
 > [!CAUTION]
-> Be aware that wildcards are accessed differently in the input an output part of your rule, where they are surrounded by curly brackets and inside the shell part, where they are also surrounded by curly brackets, but they have to be preceded by **wildcards.**, in the same way as you would access named output or input files. Forgetting to put the **wildcards.** part in fromt of the names of wildcards is also one the mistakes I make all the time. 
+> Be aware that wildcards are accessed differently in the input an output part of your rule, where they are surrounded by curly brackets and inside the shell part, where they are also surrounded by curly brackets, but they have to be preceded by **wildcards.**, in the same way as you would access named output or input files. Forgetting to put the **wildcards.** part in front of the names of wildcards is also one the mistakes I make all the time. 
 
 ## Using directories
 
