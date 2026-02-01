@@ -102,9 +102,9 @@ Use no more than 4 rules and the all rule!
 
 ### Exercise workflow 3:
 
+Use no more than 4 rules!
 
-
-
+![plot graph](images/06_expand_functions/wc_03.jpg)
 
 ## Your turn: modify your workflow to run multiple replicate structure runs and summarize and plot their results
 
