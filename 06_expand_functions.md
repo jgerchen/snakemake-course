@@ -102,7 +102,7 @@ Use no more than 4 rules and the all rule!
 
 ### Exercise workflow 3:
 
-Use no more than 4 rules!
+Use no more than 4 rules! Also remember that rules can have more than one output file and that you can also use the expand rule in the output part.
 
 ![plot graph](images/06_expand_functions/wc_03.jpg)
 
