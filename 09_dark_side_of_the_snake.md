@@ -27,10 +27,5 @@ snakemake -j1 --touch output_file.txt
 
 This command will not run any actual snakemake rules, however it will resolve the DAG and go through any files that already exist and adjust their timestamp, while it will ignore files that don't exist and would be created by running their rules without the **--touch** parameter. Since this is also not very computationally intensive you can also run it on the login node on MetaCentrum.
 
-## Snakemake resolves my wildcards in really weird ways and not how I intended
-
-
-
-
 > [!TIP]
 > Many more common issues with Snakemake are discusses [here](https://snakemake.readthedocs.io/en/stable/project_info/faq.html)
