@@ -1,0 +1,15 @@
+rule rule_1:
+	output: expand("file1_{{wc1}}_{rep1}", rep1=range(1,4))
+	shell: "touch {output}"
+rule rule_2:
+	input: "file1_{wc1}_{rep1}"
+	output: "file2_{wc1}_{rep1}"
+	shell: "touch {output}"
+rule rule_3:
+	input: expand("file2_{{wc1}}_{rep1}", rep1=range(1,4))
+	output: "file3_{wc1}"
+	shell: "touch {output}"
+rule rule_4:
+	input: expand("file3_{wc1}", wc1=range(1,4))
+	output: "file4"
+	shell: "touch {output}"

@@ -4,7 +4,7 @@ import glob
 parser=argparse.ArgumentParser()
 parser.add_argument("-p", "--parameter_file", help="output parameter file")
 parser.add_argument("-i", "--ind_file", help="output ind file")
-parser.add_argument("-s", "--structure_files", help="list of structure output files")
+parser.add_argument("-s", "--structure_files", help="common name part of structure output files")
 
 args=parser.parse_args()
 parameter_file=args.parameter_file

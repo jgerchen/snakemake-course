@@ -102,11 +102,15 @@ Use no more than 4 rules and the all rule!
 
 ![plot graph](images/06_expand_functions/wc_02.jpg)
 
+You can find an example Snakefile with the solution [here](scripts/06_expand_functions/Snakefile_exercise2)
+
 ### Exercise workflow 3:
 
 Use no more than 4 rules! Also remember that rules can have more than one output file and that you can also use the expand rule in the output part.
 
 ![plot graph](images/06_expand_functions/wc_03.jpg)
+
+You can find an example Snakefile with the solution [here](scripts/06_expand_functions/Snakefile_exercise3)
 
 ## Your turn: modify your workflow to run multiple replicate structure runs and summarize and plot their results
 
