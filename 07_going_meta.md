@@ -154,7 +154,7 @@ rule structure:
 This would cause your structure run to run on a node with four cores, however structure does not have multi threading support and neither do any of the other scripts and programs we used in the examples. For programs that do you typically have to provide the number of threads in the shell command, which you can do by accessing the **{threads}** variable using curly brackets. So for example for a multi-threaded program like [bwa mem](https://github.com/lh3/bwa?tab=readme-ov-file) the shell command could then look like this:
 
 ```
-shell: "bwa mem -t {threads} ref.fa read1.fq read2.fq "
+shell: "bwa mem -t {threads} ref.fa read1.fq read2.fq"
 ```
 
 ### Working on Scratch
@@ -201,11 +201,13 @@ Here we created a new temporary folder called **my_job** on the scratch space of
 
 MetaCentrum has its own system of providing software modules you may want to use instead of conda. You can load them inside a snakemake rule like [you would in any MetaCentrum job script](https://docs.metacentrum.cz/en/docs/software/modules) for example like
 
+```
 shell: 
     """
     module load bwa
     bwa mem -t {threads} ref.fa read1.fq read2.fq "
     """
+```
 
 >[!CAUTION]
 > You can often run into issues when you try to use both conda and MetaCentrum modules at the same time, because they will often try to load the same libraries, which can then be mutually incompatible. **Try to avoid using both conda and MetaCentrum modules in the same rule**. 

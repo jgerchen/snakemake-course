@@ -1,6 +1,6 @@
 # 9. The dark side of the Snake. Common Snakemake issues and how to fix them
 
-There are several issues me and other people I knew commonly run when running snakemake workflows or when building your own workflow. In this chapter I will go through some of them and show you why they happen and how to fix them or how to prevent them from happening in the first place.
+There are several issues me and other people I knew commonly run when running snakemake workflows or when building your own workflow. In this chapter I will go through two of them and show you why they happen and how to fix them or how to prevent them from happening in the first place.
 
 ## After the Snakemake process crashes or gets killed because it ran out of walltime Snakemake complains that the directory is locked and won't let you rerun your previous Snakemake command
 

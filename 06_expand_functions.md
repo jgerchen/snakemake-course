@@ -2,7 +2,6 @@
 
 In the previous part we already saw that a rule with a wildcard may be run multiple times if we ask Snakemake to create multiple output files with different values for that wildcard. In addition to that, a rule can also be run multiple times if a second rule will have several input files, which can be resolved with different values for that wildcard. Consider the following Scenario:
 
-
 ```
 rule rule_1:
 	output: "rule1_file{wc1}.txt"
@@ -132,5 +131,5 @@ CLUMPP paramfile
 
 The paramfile also contains the name of the indfile you gave as parameter to the script above and it will generate two output files, both named based on the -s parameter you gave in the python script above: the clummp output file which ends with **.out** and a misc file, which ends with **.misc** (so **struct_out.out** and **struct_out.misc** respectively if you used struct_out for -s as in the example above)
 
-- [This R script](scripts/06_expand_functions/plot_structure_clumpp.R) used for plotting clumpp output. It also depends on the r-viridis library, which should already be installed. It is run as the script for plotting individual structure runs from the previous session, the only difference is that it takes clummp output insteat of structure 
+- [This R script](scripts/06_expand_functions/plot_structure_clumpp.R) used for plotting clumpp output. It also depends on the r-viridis library, which should already be installed. It is run as the script for plotting individual structure runs from the previous session, the only difference is that it takes clummp output instead of structure 
 
