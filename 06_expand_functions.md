@@ -94,6 +94,8 @@ Use no more than 6 rules!
 
 ![plot graph](images/06_expand_functions/wc_01.jpg)
 
+You can find an example Snakefile with the solution [here](scripts/06_expand_functions/Snakefile_exercise1)
+
 ### Exercise workflow 2:
 
 Use no more than 4 rules and the all rule!

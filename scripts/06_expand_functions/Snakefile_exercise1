@@ -1,0 +1,29 @@
+rule rule_1:
+	output: "r1_{wc1}_{rep1}_{rep3}.txt"
+	shell: "touch {output}"
+
+rule rule_2:
+	input: expand("r1_{{wc1}}_{{rep1}}_{rep_3}.txt", rep_3=[1,2])
+	output: "r2_{wc1}_{rep1}.txt"
+	shell: "touch {output}"
+
+rule rule_3:
+	input: expand("r2_{{wc1}}_{rep1}.txt", rep1=range(1,4))
+	output: "r3_{wc1}.txt"
+	shell: "touch {output}"
+
+rule rule_4:
+	output: "r4_{wc2}_{rep2}.txt"
+	shell: "touch {output}"
+
+rule rule_5:
+	input: expand("r4_{{wc2}}_{rep2}.txt", rep2=range(1,6))
+	output: "r5_{wc2}.txt"
+	shell: "touch {output}"
+
+rule rule_6:
+	input: 
+		"r5_{wc2}.txt",
+		"r3_{wc1}.txt"
+	output: "r6_{wc1}_{wc2}.txt"
+	shell: "touch {output}"
