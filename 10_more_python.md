@@ -103,33 +103,28 @@ Then we use snakemakes **unpack function**, which when applied to function which
 In the previous part we used a function to return a dictionary to python. However, imagine a different more plausible scenario, were we give a sample an individual name defined by a wildcard and were then we have a table, which matches the name of the wildcard to a longer complex file name, that could be somewhere outside of your workflow folder. Imagine a table as follows, where the first column are identifiers of samples, while the second column are paths to file names.
 
 ```
-sample1    /storage/brno12-cerit/your_username/data/s1.data
-sample2    /storage/brno12-cerit/your_username/data/s2.data
-sample3    /storage/brno12-cerit/your_username/data/s3.data
+f1    /storage/brno12-cerit/your_username/data/s1.data
+f2    /storage/brno12-cerit/your_username/data/s2.data
+f3    /storage/brno12-cerit/your_username/data/s3.data
 ```
 
 Previously, we made a function that returns a dictionary from a file it reads, which makes sense if we do it just once. However, we may have different rules (for each sample) accessing the input table, so it may make more sense to only read the table into python once and then have a function access that dictionary. To do this we could read in the dictionary directly in the Snakemake file as follows:
 
 
 ```
-file_dict={}
-with open("input_table.txt") as d_file:
-    for d_line in d_file:
-        d_key=d_line.strip().split()[0]
-        d_value=d_line.strip().split()[1]
-        file_dict.update({d_key:d_value})
-
-get_sample(wildcards):
-    return file_dict[wildcards.sample]
+def load_dict(wildcards):
+    file_dict={}
+    with open("input_table.txt") as d_file:
+        for d_line in d_file:
+            d_key=d_line.strip().split()[0]
+            d_value=d_line.strip().split()[1]
+            file_dict.update({d_key:d_value})
+    return file_dict
 
 rule rule_1:
-    input: get_sample
-    outfile: "out_{sample}.txt"
-    shell: "cp {input} {output}" 
-rule rule_2:
-    input: expand("out_{wc}", wc=file_dict)
-    outfile: "out_wildcards.txt"
-    shell: "cp {input} {output}" 
+    input: unpack(load_dict)
+    output: "out_unpack.txt"
+    shell: "cat {input.f2} {input.f1} {input.f3} > {output}"
 ```
 
 Note that we now open the dictionary the same way as before, but we do it **outside** of our input function. This means that the python object containing the dictionary is not specific to the input function, but available to all snakemake objects. Also note that the **get_sample** input function now got a parameter called **wildcards**. Snakemake will understand that when it gets an input function with the parameter **wildcards**, that it will pass an objections containing the values of wildcards for that function and in this case we can then access the value of the wildcard **sample** using **wildcards.sample**. We then use the value of this wildcards to access the corresponding key in **file_dict** using square brackets.
@@ -160,23 +155,6 @@ For resources, functions can use the parameter **attempt**, which tells Snakemak
 
 > [!CAUTION]
 > Snakemake does not know why any of your rules failed, so if you keep giving it more memory, it will continue to retry, even if memory wan't the issue in the first place.
-
-
-## Running python code directly to generate output files of your rules
-
-In all the previous sections we used the **shell** directive of your rules to tell Snakemake how to get from input to output files using bash code, since this is probably the most common way how you will use snakemake. However, you can also directly supply snakemake with python code using the **run** directive instead, as in the following example
-
-```
-rule run_python:
-	output: "python_{wc1}.txt"
-    run:
-        with open(output) as out_file:
-            out_file.write("Python output with wildcard "+wildcards.wc1)
-```
-
-What happens here that we open an output file using pythons **open** function and write as sentence including the value of our wildcard **wc1** into it. There are two things to notice here. First, our python code gets passed directly to the rule and not as a string object, **so it is not in quotes**. Second, wildcards are accessed without curly brackets in python code and we can use the **+** operator in python to concatenate it with the rest of the string we want to write to the output file.
-
-Be aware that like the shell part, the run part is run separately from python code you put outside your rules. So if you run it on the cluster with separate jobs, python code in the run part will be run on the computing node and note by snakemake itself.
 
 # More Snakemake resources
 
