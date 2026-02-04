@@ -6,7 +6,7 @@ Although Snakemake is based on python, the previous chapters showed you that you
 
 Instead of explicitely defining the input files of our rules, we can also use self written python functions, whose return value are your input files. This is of course infinitely flexible, but here we will focus on the common case of reading a list of files from an input text file.
 
-You define input functions as regular functions **outside the scope of your rules** (so at zero indentation level).
+You define input functions as regular functions **outside the scope of your rules** (so at zero indentation level). This function must have **wildcards** as parameter.
 
 >### :snake: Python functions
 > In python functions are defined by the key word **def** followed by a name and a list of names or unnamed parameters in brackets and a **colon**. Everything inside the function is defined by one level of indentation. Return values (or any python objects like arrays or dictionaries) are indicated with the keyword **return** at the start of the line.
@@ -17,7 +17,7 @@ Consider the following scenario:
 We want to load all files that are listed in the file **input_list.txt** (one file per line).
 
 ```
-def load_file():
+def load_file(wildcards):
     file_list=[]
     with open("input_list.txt") as l_file:
         for l_line in l_file:
@@ -41,7 +41,7 @@ Let's consider a different way how we may want to use input functions and python
 
 ```
 import glob
-def load_glob():
+def load_glob(wildcards):
     return glob.glob("files/*.txt")
 
 rule rule_1:
@@ -68,19 +68,27 @@ inp3    input_file3.txt
 Now we want to used each line as named input file, which we can do as follows:
 
 ```
-def load_dict():
-    file_dict={}
-    with open("input_list.txt") as d_file:
-        for d_line in d_file:
-            d_key=d_line.strip().split()[0]
-            d_value=d_line.strip().split()[1]
-            file_dict.update({d_key:d_value})
-    return file_dict
+file_dict={}
+with open("input_table.txt") as d_file:
+    for d_line in d_file:
+        d_key=d_line.strip().split()[0]
+        d_value=d_line.strip().split()[1]
+        file_dict.update({d_key:d_value})
+print(file_dict)
+
+def get_sample(wildcards):
+    print(wildcards)
+    return file_dict[wildcards.sample]
 
 rule rule_1:
-    input: unpack(load_dict)
-    outfile: "out.txt"
-    shell: "cat {input.inp2} {input.inp1} {input.inp3} > {outfile}" 
+    input: get_sample
+    output: "out_{sample}.txt"
+    shell: "echo {wildcards.sample} > {output}" 
+
+rule rule_2:
+    input: expand("out_{wc}.txt", wc=file_dict.keys())
+    output: "out_wildcards.txt"
+    shell: "cat {input} > {output}" 
 ```
 
 Here we used a function to return a dictionary instead of a list.
@@ -105,7 +113,7 @@ Previously, we made a function that returns a dictionary from a file it reads, w
 
 ```
 file_dict={}
-with open("input_list.txt") as d_file:
+with open("input_table.txt") as d_file:
     for d_line in d_file:
         d_key=d_line.strip().split()[0]
         d_value=d_line.strip().split()[1]
@@ -117,6 +125,10 @@ get_sample(wildcards):
 rule rule_1:
     input: get_sample
     outfile: "out_{sample}.txt"
+    shell: "cp {input} {output}" 
+rule rule_2:
+    input: expand("out_{wc}", wc=file_dict)
+    outfile: "out_wildcards.txt"
     shell: "cp {input} {output}" 
 ```
 
