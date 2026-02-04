@@ -68,27 +68,19 @@ inp3    input_file3.txt
 Now we want to used each line as named input file, which we can do as follows:
 
 ```
-file_dict={}
-with open("input_table.txt") as d_file:
-    for d_line in d_file:
-        d_key=d_line.strip().split()[0]
-        d_value=d_line.strip().split()[1]
-        file_dict.update({d_key:d_value})
-print(file_dict)
-
-def get_sample(wildcards):
-    print(wildcards)
-    return file_dict[wildcards.sample]
+def load_dict(wildcards):
+    file_dict={}
+    with open("input_table.txt") as d_file:
+        for d_line in d_file:
+            d_key=d_line.strip().split()[0]
+            d_value=d_line.strip().split()[1]
+            file_dict.update({d_key:d_value})
+    return file_dict
 
 rule rule_1:
-    input: get_sample
-    output: "out_{sample}.txt"
-    shell: "echo {wildcards.sample} > {output}" 
-
-rule rule_2:
-    input: expand("out_{wc}.txt", wc=file_dict.keys())
-    output: "out_wildcards.txt"
-    shell: "cat {input} > {output}" 
+    input: unpack(load_dict)
+    output: "out_unpack.txt"
+    shell: "cat {input.f2} {input.f1} {input.f3} > {output}"
 ```
 
 Here we used a function to return a dictionary instead of a list.
@@ -110,21 +102,28 @@ f3    /storage/brno12-cerit/your_username/data/s3.data
 
 Previously, we made a function that returns a dictionary from a file it reads, which makes sense if we do it just once. However, we may have different rules (for each sample) accessing the input table, so it may make more sense to only read the table into python once and then have a function access that dictionary. To do this we could read in the dictionary directly in the Snakemake file as follows:
 
-
 ```
-def load_dict(wildcards):
-    file_dict={}
-    with open("input_table.txt") as d_file:
-        for d_line in d_file:
-            d_key=d_line.strip().split()[0]
-            d_value=d_line.strip().split()[1]
-            file_dict.update({d_key:d_value})
-    return file_dict
+file_dict={}
+with open("input_table.txt") as d_file:
+    for d_line in d_file:
+        d_key=d_line.strip().split()[0]
+        d_value=d_line.strip().split()[1]
+        file_dict.update({d_key:d_value})
+print(file_dict)
+
+def get_sample(wildcards):
+    print(wildcards)
+    return file_dict[wildcards.sample]
 
 rule rule_1:
-    input: unpack(load_dict)
-    output: "out_unpack.txt"
-    shell: "cat {input.f2} {input.f1} {input.f3} > {output}"
+    input: get_sample
+    output: "out_{sample}.txt"
+    shell: "echo {wildcards.sample} > {output}" 
+
+rule rule_2:
+    input: expand("out_{wc}.txt", wc=file_dict.keys())
+    output: "out_wildcards.txt"
+    shell: "cat {input} > {output}" 
 ```
 
 Note that we now open the dictionary the same way as before, but we do it **outside** of our input function. This means that the python object containing the dictionary is not specific to the input function, but available to all snakemake objects. Also note that the **get_sample** input function now got a parameter called **wildcards**. Snakemake will understand that when it gets an input function with the parameter **wildcards**, that it will pass an objections containing the values of wildcards for that function and in this case we can then access the value of the wildcard **sample** using **wildcards.sample**. We then use the value of this wildcards to access the corresponding key in **file_dict** using square brackets.
