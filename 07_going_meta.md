@@ -64,7 +64,7 @@ snakemake -j 100 --profile /storage/brno12-cerit/home/your_user_id/snakemake_cou
 
 + If you want to run more than 1 job in parallel you have to set the -j parameter to the maximum number of jobs that should be run in parallel
 
-+ You have to set the **system variable XGD_CACHE_HOME** to point to a writable folder in your home directory, so for example if you created the folder **source_cache** in your Snakemake folder it could look like this
++ You have to set the **system variable XDG_CACHE_HOME** to point to a writable folder in your home directory, so for example if you created the folder **source_cache** in your Snakemake folder it could look like this
 
 ```
 XDG_CACHE_HOME="/storage/brno12-cerit/home/your_user_id/snakemake_course/source_cache" 
