@@ -45,12 +45,12 @@ In the input and output part and other parts outside the shell part of your rule
 
 ```
 rule structure:
-	conda:	{config["conda_structure"]}
-    log: {config["log_folder"]}+"/structure_{P23}_{P32}_{rep}"
+	conda:	config["conda_structure"]
+    log: config["log_folder"]+"/structure_{P23}_{P32}_{rep}"
     resources:
-        mem_mb={config["mem_structure"]},
-        disk_mb={config["disk_mb_structure"]},
-        runtime={config["runtime_structure"]}
+        mem_mb=config["mem_structure"],
+        disk_mb=config["disk_mb_structure"],
+        runtime=config["runtime_structure"]
 ```
 
 In the example above we added the option to set the conda environment used by the rule based on the config file, we set the option to define the location of the folder containing the log files and we could set all three resources. For the log file note that we didn't replace the complete filename, because the log file name still needs to contain the wildcards. Rather, we concatenated the output of the **log_folder** variable from the config file with the text string containing the wildcards.
