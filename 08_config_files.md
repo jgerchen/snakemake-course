@@ -88,7 +88,7 @@ migration_P23: 0.002
 
 Now the user can see what each of the options mean and if he wants to change them he can do this without changing the workflow or the default config file, by picking out the values he wants to change and writing including them in a new yaml file and supplying it using **--configfile** the config parameter to the snakemake command. This way the variables in the new yaml file will superseed the values in the default config file.
 
-## Your turn: modify your workflow to use a config file and to put its plots into a report
+## Your turn: modify your workflow to use a config file
 
 Now we want your workflow more adaptable. Change your rules so that you can set **the number of replicate Snakemake runs** and the **resource requirements for each rule** using a config file. Also set sensible default values using a default config file.
 
